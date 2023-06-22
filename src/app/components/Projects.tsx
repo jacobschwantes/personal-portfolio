@@ -1,0 +1,102 @@
+"use client";
+import { NextPageContext, NextComponentType } from "next";
+import { motion } from "framer-motion";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
+import clsx from "clsx";
+import Link from "next/link";
+import type { Project } from "@customTypes/projectTypes";
+
+const imgVariants = {
+  rest: {
+    scale: 1.1,
+  },
+  hover: { scale: 1.15 },
+};
+const taglineVariants = {
+  rest: {
+    bottom: -50,
+  },
+  hover: { bottom: 20 },
+};
+
+interface ProjectsProps {
+  wide?: boolean;
+  files: Project[];
+  limit?: number;
+}
+const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
+  wide,
+  files,
+  limit,
+}) => {
+  const [hoverTarget, setHoverTarget] = useState("");
+  return (
+    <ul
+      className={clsx(
+        wide ? "grid-cols-1" : "md:grid-cols-2 grid-cols-1",
+        "grid gap-6"
+      )}
+    >
+      {files.slice(0, limit ?? files.length).map((project, i) => (
+        <Link key={project.slug} href={`projects/${project.slug}`}>
+          <motion.li
+            onHoverStart={() => setHoverTarget(project.meta.name)}
+            onHoverEnd={() => setHoverTarget("")}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            className={clsx(
+              "border-2 border-zinc-900 rounded-[2rem] group cursor-pointer flex flex-col overflow-hidden",
+              wide && ""
+            )}
+          >
+            <div className="flex justify-between px-6 py-8 text-2xl ">
+              <div className="flex items-center md:space-x-2">
+                {project.meta.name === hoverTarget && (
+                  <motion.div
+                    className="hidden md:block "
+                    initial={{ scale: 0, x: 0 }}
+                    animate={{ scale: 1, x: 0 }}
+                    transition={{ ease: "easeOut" }}
+                  >
+                    <ArrowRightIcon className="h-8 text-white rotate-[-45deg]" />
+                  </motion.div>
+                )}
+                <motion.h2 key="project" layout className="">
+                  {project.meta.name}
+                </motion.h2>
+              </div>
+              <p className="">{project.meta.year}</p>
+            </div>
+            <div className="overflow-hidden rounded-[2rem] relative h-[680px] ">
+              <div className="absolute inset-0">
+                <motion.img
+                  className="hidden md:block object-cover h-full w-full "
+                  transition={{ ease: "easeOut" }}
+                  variants={imgVariants}
+                  src={project.meta.img}
+                />
+              </div>
+              <img className="md:hidden object-cover h-full w-full" src={project.meta.img} />
+              <motion.p
+                style={{ left: 20 }}
+                variants={taglineVariants}
+                className="px-4 py-2 border border-zinc-800 rounded-full bg-black absolute hidden md:block"
+              >
+                {project.meta.product}
+              </motion.p>
+              <p
+                style={{ left: 20, bottom: 20 }}
+                className="px-4 py-2 border border-zinc-800 rounded-full bg-black absolute md:hidden"
+              >
+                {project.meta.product}
+              </p>
+            </div>
+          </motion.li>
+        </Link>
+      ))}
+    </ul>
+  );
+};
+export default Projects;
