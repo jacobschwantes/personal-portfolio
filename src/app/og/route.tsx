@@ -9,18 +9,15 @@ export async function GET(request: Request) {
   const src = searchParams.get("preview");
   const description = searchParams.get("description");
   const name = searchParams.get("name");
-  const regularFont = fetch(
+  const regularFont = await fetch(
     new URL("../../assets/fonts/Inter-Regular.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
-  const boldFont = fetch(
+  const boldFont = await fetch(
     new URL("../../assets/fonts/Inter-Bold.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
-  const [regularFontData, boldFontData] = await Promise.all([
-    regularFont,
-    boldFont,
-  ]);
+
   return new ImageResponse(
     (
       <div
@@ -50,7 +47,7 @@ export async function GET(request: Request) {
         <div tw="w-1/2 flex items-center h-full">
           <img
             alt="preview of project"
-            tw="w-full h-full object-cover"
+            tw="w-full h-full"
             src={src || "https://via.placeholder.com/150"}
           />
         </div>
@@ -60,12 +57,12 @@ export async function GET(request: Request) {
       fonts: [
         {
           name: "Inter",
-          data: regularFontData,
+          data: regularFont,
           weight: 400,
         },
         {
           name: "Inter",
-          data: boldFontData,
+          data: boldFont,
           weight: 700,
         },
       ],
