@@ -32,7 +32,7 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
 }) => {
   const [hoverTarget, setHoverTarget] = useState("");
   return (
-    <ul
+    <div
       className={clsx(
         wide ? "grid-cols-1" : "md:grid-cols-2 grid-cols-1",
         "grid gap-6"
@@ -40,7 +40,7 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
     >
       {files.slice(0, limit ?? files.length).map((project, i) => (
         <Link key={project.slug} href={`projects/${project.slug}`}>
-          <motion.li
+          <motion.div
             onHoverStart={() => setHoverTarget(project.meta.name)}
             onHoverEnd={() => setHoverTarget("")}
             initial="rest"
@@ -72,13 +72,14 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
             <div className="overflow-hidden rounded-[2rem] relative h-[680px] ">
               <div className="absolute inset-0">
                 <motion.img
+                  alt="preview image of project"
                   className="hidden md:block object-cover h-full w-full "
                   transition={{ ease: "easeOut" }}
                   variants={imgVariants}
                   src={project.meta.img}
                 />
               </div>
-              <img className="md:hidden object-cover h-full w-full" src={project.meta.img} />
+              <img alt="preview image of project" className="md:hidden object-cover h-full w-full" src={project.meta.img} />
               <motion.p
                 style={{ left: 20 }}
                 variants={taglineVariants}
@@ -93,10 +94,10 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
                 {project.meta.product}
               </p>
             </div>
-          </motion.li>
+          </motion.div>
         </Link>
       ))}
-    </ul>
+    </div>
   );
 };
 export default Projects;

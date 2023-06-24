@@ -33,7 +33,7 @@ interface SocialsProps {}
 const Socials: NextComponentType<NextPageContext, {}, SocialsProps> = ({}) => (
   <div className="flex space-x-10">
     {platforms.map((platform) => (
-      <Link key={platform.name} target="_blank" rel="noreferrer" className="bg-zinc-800 rounded-full p-3 group" href={platform.href}>
+      <Link key={platform.name} target="_blank" rel="noreferrer" aria-label={`Link to ${platform.name}`} className="bg-zinc-800 rounded-full p-3 group" href={platform.href}>
         <platform.icon className="w-5 h-5 text-zinc-500 group-hover:text-blue-600 transition-colors duration-300" />
       </Link>
     ))}

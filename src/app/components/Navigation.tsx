@@ -89,7 +89,7 @@ const MenuIcon = ({
   setOpen: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <button onClick={() => setOpen(!open)}>
+    <button aria-label="navigation menu" onClick={() => setOpen(!open)}>
       <svg width="23" height="23" viewBox="0 0 23 23">
         <motion.path
           fill="transparent"

@@ -90,13 +90,7 @@ const CustomImage = (props: { src: string; alt: string }) => {
       style={{ scale, rotateX, opacity, transformPerspective: 1200 }}
       className="md:rounded-3xl rounded-xl overflow-hidden w-full relative max-h-[800px]"
     >
-    
-        <img
-          {...props}
-          className=" object-contain  "
-        />
-     
-      
+      <img {...props} className=" object-contain  " />
     </motion.div>
   );
 };
