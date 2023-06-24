@@ -10,11 +10,11 @@ export async function GET(request: Request) {
   const description = searchParams.get("description");
   const name = searchParams.get("name");
   const regularFont = await fetch(
-    new URL("../../assets/fonts/Inter-Regular.ttf", import.meta.url)
+    new URL("../../assets/fonts/Inter-Regular.otf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const boldFont = await fetch(
-    new URL("../../assets/fonts/Inter-Bold.ttf", import.meta.url)
+    new URL("../../assets/fonts/Inter-Bold.otf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
 
