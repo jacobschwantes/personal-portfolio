@@ -1,9 +1,29 @@
+import { Project } from "@/types/projectTypes";
 import CustomLink from "./components/CustomLink";
 import Projects from "./components/Projects";
 import Socials from "./components/Socials";
 import { getProjects } from "./lib/mdxUtils";
-export default function Home() {
+import { getPlaiceholder } from "plaiceholder";
+const getBase64Data = async (src: string) => {
+  const buffer = await fetch(src).then(async (res) =>
+    Buffer.from(await res.arrayBuffer())
+  );
+  const { base64 } = await getPlaiceholder(buffer);
+
+  return base64;
+};
+const convertProjectFiles = async (files: Project[]) => {
+  const copy = [...files];
+  for (const file of copy) {
+    const blurData = await getBase64Data(file.meta.img);
+    file.blurData = blurData;
+  }
+  
+  return files;
+}
+export default async function Home() {
   const projectFiles = getProjects();
+  const withBlurData = await convertProjectFiles(projectFiles);
   return (
     <main className="flex min-h-screen flex-col justify-between w-full mx-auto md:py-24 py-14 spacey-y-10 ">
       <section className="md:px-32 px-8 md:py-12 py-6">
@@ -24,7 +44,7 @@ export default function Home() {
         </div>
       </section>
       <section className="md:px-6 py-10">
-        <Projects limit={2} files={projectFiles} />
+        <Projects limit={2} files={withBlurData} />
       </section>
     </main>
   );

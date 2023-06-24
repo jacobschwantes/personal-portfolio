@@ -78,6 +78,8 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
                   variants={imgVariants}
                 >
                   <Image
+                  placeholder="blur"
+                  blurDataURL={project.blurData}
                     priority
                     fill
                     alt={`preview image of ${project.meta.name} project`}
