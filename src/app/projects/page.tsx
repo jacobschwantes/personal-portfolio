@@ -1,28 +1,8 @@
-import { Project } from "@/types/projectTypes";
 import Projects from "../components/Projects";
 import { getProjects } from "../lib/mdxUtils";
-import { getPlaiceholder } from "plaiceholder";
-const getBase64Data = async (src: string) => {
-  const buffer = await fetch(src).then(async (res) =>
-    Buffer.from(await res.arrayBuffer())
-  );
-  const { base64 } = await getPlaiceholder(buffer);
-
-  return base64;
-};
-const convertProjectFiles = async (files: Project[]) => {
-
-  const copy = [...files];
-  for (const file of copy) {
-    const blurData = await getBase64Data(file.meta.img);
-    file.blurData = blurData;
-  }
-  
-  return files;
-}
+import { convertProjectFiles } from "../lib/imageUtils";
 export default async function Home() {
   const projectFiles = getProjects();
-  
   const withBlurData = await convertProjectFiles(projectFiles);
   return (
     <main className="flex min-h-screen flex-col justify-between md:py-24 py-14">

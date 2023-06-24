@@ -2,7 +2,7 @@
 import { NextPageContext, NextComponentType } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { circOut, motion, useSpring } from "framer-motion";
-import { ReactNode, useMemo } from "react";
+import { ReactNode } from "react";
 import { useScroll } from "framer-motion";
 import { useRef } from "react";
 import { useTransform } from "framer-motion";
