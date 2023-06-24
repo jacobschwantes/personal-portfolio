@@ -7,6 +7,8 @@ import { useScroll } from "framer-motion";
 import { useRef } from "react";
 import { useTransform } from "framer-motion";
 import { type MDXRemoteSerializeResult } from "next-mdx-remote";
+
+import Image from "next/image";
 interface mdxContentProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
@@ -88,9 +90,14 @@ const CustomImage = (props: { src: string; alt: string }) => {
     <motion.div
       ref={ref}
       style={{ scale, rotateX, opacity, transformPerspective: 1200 }}
-      className="md:rounded-3xl rounded-xl overflow-hidden w-full relative max-h-[800px]"
+      className="md:rounded-3xl rounded-xl overflow-hidden aspect-[16/9] w-full relative max-h-[800px] "
     >
-      <img {...props} className=" object-contain  " />
+      <Image
+        fill
+        src={props.src}
+        alt={props.alt}
+        className=" object-cover object-top"
+      />
     </motion.div>
   );
 };

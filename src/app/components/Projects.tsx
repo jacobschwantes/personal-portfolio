@@ -6,6 +6,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import type { Project } from "@customTypes/projectTypes";
+import Image from "next/image";
 
 const imgVariants = {
   rest: {
@@ -71,15 +72,28 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
             </div>
             <div className="overflow-hidden rounded-[2rem] relative h-[680px] ">
               <div className="absolute inset-0">
-                <motion.img
-                  alt="preview image of project"
-                  className="hidden md:block object-cover h-full w-full "
+                <motion.div
+                  className="h-full w-full"
                   transition={{ ease: "easeOut" }}
                   variants={imgVariants}
-                  src={project.meta.img}
-                />
+                >
+                  <Image
+                    priority
+                    fill
+                    alt={`preview image of ${project.meta.name} project`}
+                    className="hidden md:block object-cover h-full w-full "
+                    src={project.meta.img}
+                  />
+                </motion.div>
               </div>
-              <img alt="preview image of project" className="md:hidden object-cover h-full w-full" src={project.meta.img} />
+              <Image
+                priority
+                fill
+                alt={`preview image of ${project.meta.name} project`}
+                className="md:hidden object-cover h-full w-full "
+                src={project.meta.img}
+              />
+
               <motion.p
                 style={{ left: 20 }}
                 variants={taglineVariants}
