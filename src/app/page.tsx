@@ -8,7 +8,7 @@ export const metadata = {
   description:
     "Transforming complex problems into simple, elegant, and engaging digital experiences",
   openGraph: {
-    images: ["/og?id=root"],
+    images: ["/og"],
     title: "Jacob Schwantes | Full-Stack Developer",
     description:
       "Transforming complex problems into simple, elegant, and engaging digital experiences.",

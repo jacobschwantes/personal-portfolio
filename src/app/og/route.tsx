@@ -329,7 +329,7 @@ export async function GET(request: Request) {
   const src = searchParams.get("preview");
   const description = searchParams.get("description");
   const name = searchParams.get("name");
-  const id = searchParams.get("id");
+  const template = searchParams.get("template");
   const regularFont = await fetch(
     new URL("../../assets/fonts/Inter-Regular.woff", import.meta.url)
   ).then((res) => res.arrayBuffer());
@@ -339,82 +339,40 @@ export async function GET(request: Request) {
   ).then((res) => res.arrayBuffer());
   const iconStyles =
     "h-42 w-42 rounded-3xl bg-black p-8 border-2 shadow-2xl shadow-blue-600  border-[#1a2b66] ";
-  if (id === "root") {
+
+  if (template === "project")
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundColor: "#130f40",
-            backgroundImage: "linear-gradient(315deg, #130f40 0%, #000000 74%)",
+            backgroundColor: "#2d3436",
+            backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 88%)",
           }}
-          tw="flex h-full w-full   relative"
+          tw="flex h-full w-full items-center justify-between "
         >
-          <div tw="flex flex-col justify-between  absolute -left-8 -right-8 -top-16  ">
-            <div tw=" flex w-full justify-between">
-              {icons.slice(0, 5).map((icon, i) => (
-                <span
-                  key={icon.name}
-                  tw={clsx("", i % 2 ? " pt-24 relative" : "")}
-                >
-                  <span
-                    style={{
-                      boxShadow: "1px 5px 70px -10px #2563eb",
-                    }}
-                    tw={iconStyles}
-                  >
-                    <icon.icon tw=" h-full w-full" />
-                  </span>
-                </span>
-              ))}
+          <div tw="flex flex-col h-full flex-1 items-start justify-center p-10">
+            <div tw="flex">
+              <img
+                alt="profile picture"
+                tw="h-12 rounded-full border border-zinc-800 my-4"
+                src="https://avatars.githubusercontent.com/u/74641690?v=4"
+              />
             </div>
-            <div tw=" flex w-full justify-between items-center ">
-              {icons.slice(5, 6).map((icon, i) => (
-                <span key={icon.name}>
-                  <span
-                    style={{
-                      boxShadow: "1px 5px 70px -10px #2563eb",
-                    }}
-                    tw={iconStyles}
-                  >
-                    <icon.icon tw="h-full w-full" />
-                  </span>
-                </span>
-              ))}
-              <div tw="flex flex-col justify-start h-full -mt-8">
-                <h1 tw="text-[120px] text-white font-bold flex items-center my-0">
-                  JACOB
-                </h1>
-                <h2 tw="my-0 text-zinc-300 font-normal text-2xl ml-auto">
-                  Full-Stack Developer
-                </h2>
-              </div>
-              {icons.slice(6, 7).map((icon, i) => (
-                <span key={icon.name}>
-                  <span
-                    style={{
-                      boxShadow: "1px 5px 70px -10px #2563eb",
-                    }}
-                    tw={iconStyles}
-                  >
-                    <icon.icon tw="h-full w-full" />
-                  </span>
-                </span>
-              ))}
+
+            <div
+              style={{ fontWeight: 700 }}
+              tw="flex flex-wrap justify-center text-5xl text-center text-white rounded-xl"
+            >
+              {name}
             </div>
-            <div tw=" flex w-full justify-between">
-              {icons.slice(7, 12).map((icon, i) => (
-                <span key={icon.name} tw={clsx("", i % 2 ? " " : " pt-24")}>
-                  <span
-                    style={{
-                      boxShadow: "1px 5px 70px -10px #2563eb",
-                    }}
-                    tw={iconStyles}
-                  >
-                    <icon.icon tw="h-full w-full" />
-                  </span>
-                </span>
-              ))}
-            </div>
+            <p tw="font-normal my-4 text-zinc-400 text-xl">{description}</p>
+          </div>
+          <div tw="w-1/2 flex items-center h-full">
+            <img
+              alt="preview of project"
+              tw="w-full h-full"
+              src={src || "https://via.placeholder.com/150"}
+            />
           </div>
         </div>
       ),
@@ -433,40 +391,82 @@ export async function GET(request: Request) {
         ],
       }
     );
-  }
 
   return new ImageResponse(
     (
       <div
         style={{
-          backgroundColor: "#2d3436",
-          backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 88%)",
+          backgroundColor: "#130f40",
+          backgroundImage: "linear-gradient(315deg, #130f40 0%, #000000 74%)",
         }}
-        tw="flex h-full w-full items-center justify-between "
+        tw="flex h-full w-full   relative"
       >
-        <div tw="flex flex-col h-full flex-1 items-start justify-center p-10">
-          <div tw="flex">
-            <img
-              alt="profile picture"
-              tw="h-12 rounded-full border border-zinc-800 my-4"
-              src="https://avatars.githubusercontent.com/u/74641690?v=4"
-            />
+        <div tw="flex flex-col justify-between  absolute -left-8 -right-8 -top-16  ">
+          <div tw=" flex w-full justify-between">
+            {icons.slice(0, 5).map((icon, i) => (
+              <span
+                key={icon.name}
+                tw={clsx("", i % 2 ? " pt-24 relative" : "")}
+              >
+                <span
+                  style={{
+                    boxShadow: "1px 5px 70px -10px #2563eb",
+                  }}
+                  tw={iconStyles}
+                >
+                  <icon.icon tw=" h-full w-full" />
+                </span>
+              </span>
+            ))}
           </div>
-
-          <div
-            style={{ fontWeight: 700 }}
-            tw="flex flex-wrap justify-center text-5xl text-center text-white rounded-xl"
-          >
-            {name}
+          <div tw=" flex w-full justify-between items-center ">
+            {icons.slice(5, 6).map((icon, i) => (
+              <span key={icon.name}>
+                <span
+                  style={{
+                    boxShadow: "1px 5px 70px -10px #2563eb",
+                  }}
+                  tw={iconStyles}
+                >
+                  <icon.icon tw="h-full w-full" />
+                </span>
+              </span>
+            ))}
+            <div tw="flex flex-col justify-start h-full -mt-8">
+              <h1 tw="text-[120px] text-white font-bold flex items-center my-0">
+                JACOB
+              </h1>
+              <h2 tw="my-0 text-zinc-300 font-normal text-2xl ml-auto">
+                Full-Stack Developer
+              </h2>
+            </div>
+            {icons.slice(6, 7).map((icon, i) => (
+              <span key={icon.name}>
+                <span
+                  style={{
+                    boxShadow: "1px 5px 70px -10px #2563eb",
+                  }}
+                  tw={iconStyles}
+                >
+                  <icon.icon tw="h-full w-full" />
+                </span>
+              </span>
+            ))}
           </div>
-          <p tw="font-normal my-4 text-zinc-400 text-xl">{description}</p>
-        </div>
-        <div tw="w-1/2 flex items-center h-full">
-          <img
-            alt="preview of project"
-            tw="w-full h-full"
-            src={src || "https://via.placeholder.com/150"}
-          />
+          <div tw=" flex w-full justify-between">
+            {icons.slice(7, 12).map((icon, i) => (
+              <span key={icon.name} tw={clsx("", i % 2 ? " " : " pt-24")}>
+                <span
+                  style={{
+                    boxShadow: "1px 5px 70px -10px #2563eb",
+                  }}
+                  tw={iconStyles}
+                >
+                  <icon.icon tw="h-full w-full" />
+                </span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     ),
