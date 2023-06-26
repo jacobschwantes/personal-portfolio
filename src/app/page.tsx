@@ -3,6 +3,30 @@ import Projects from "./components/Projects";
 import Socials from "./components/Socials";
 import { getProjects } from "./lib/mdxUtils";
 import { convertProjectFiles } from "./lib/imageUtils";
+export const metadata = {
+  title: "Jacob Schwantes | Full-Stack Developer",
+  description:
+    "Transforming complex problems into simple, elegant, and engaging digital experiences",
+  openGraph: {
+    images: ["/og?id=root"],
+    title: "Jacob Schwantes | Full-Stack Developer",
+    description:
+      "Transforming complex problems into simple, elegant, and engaging digital experiences.",
+    url: `https://jsch.me/`,
+    siteName: "jsch.me",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "app",
+    title: "Jacob Schwantes | Full-Stack Developer",
+    description: "Transforming complex problems into simple, elegant, and engaging digital experiences.",
+    images: {
+      url: "/og?id=root",
+      alt: "Jacob Schwantes | Full-Stack Developer",
+    },
+  },
+};
 export default async function Home() {
   const projectFiles = getProjects();
   const withBlurData = await convertProjectFiles(projectFiles);

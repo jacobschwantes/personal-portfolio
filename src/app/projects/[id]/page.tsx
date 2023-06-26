@@ -50,7 +50,7 @@ export async function generateMetadata(
       title: meta.name,
       description: meta.description,
       url: `https://jsch.me/projects/${id}`,
-      siteName: meta.name,
+      siteName: 'Jacob Schwantes | Full-Stack Developer',
       locale: 'en_US',
       type: 'website',
     },
