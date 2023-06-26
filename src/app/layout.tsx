@@ -9,6 +9,16 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Jacob Schwantes",
   description: "The personal portfolio of Jacob Schwantes",
+  openGraph: {
+    images: ["/og?id=root"],
+    title: "Jacob Schwantes | Full-Stack Developer",
+    description:
+      "Transforming complex problems into simple, elegant, and engaging digital experiences.",
+    url: `https://jsch.me/`,
+    siteName: "jsch.me",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
