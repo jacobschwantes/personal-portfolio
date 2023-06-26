@@ -17,6 +17,13 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Jacob Schwantes — Full-Stack Developer',
+    description: 'Transforming complex problems into simple, elegant, and engaging digital experiences.',
+    creator: '@jacobschwantes',
+    images: ['/og'],
+  },
 };
 export default async function Home() {
   const projectFiles = getProjects();
