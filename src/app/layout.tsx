@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   themeColor: "#2563EB",
+  openGraph: {
+    images: ["/og"],
+  }
 }
 
 export default function RootLayout({
