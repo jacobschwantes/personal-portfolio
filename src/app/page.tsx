@@ -17,27 +17,6 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-  twitter: {
-    card: "app",
-    title: "Jacob Schwantes | Full-Stack Developer",
-    description: "Transforming complex problems into simple, elegant, and engaging digital experiences.",
-    images: {
-      url: "/og?id=root",
-      alt: "Jacob Schwantes | Full-Stack Developer",
-    },
-    app: {
-      name: "twitter_app",
-      id: {
-        iphone: "twitter_app://iphone",
-        ipad: "twitter_app://ipad",
-        googleplay: "twitter_app://googleplay",
-      },
-      url: {
-        iphone: "https://jsch.me/",
-        ipad: "https://jsch.me/",
-      },
-    },
-  },
 };
 export default async function Home() {
   const projectFiles = getProjects();
