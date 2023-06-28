@@ -47,10 +47,7 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
             initial="rest"
             whileHover="hover"
             animate="rest"
-            className={clsx(
-              "border-2 border-zinc-900 rounded-[2rem] group cursor-pointer flex flex-col overflow-hidden",
-              wide && ""
-            )}
+            className="border-2 border-zinc-900 rounded-[2rem] group cursor-pointer flex flex-col overflow-hidden h-[680px]"
           >
             <div className="flex justify-between px-6 py-8 text-2xl ">
               <div className="flex items-center md:space-x-2">
@@ -70,20 +67,20 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
               </div>
               <p className="">{project.meta.year}</p>
             </div>
-            <div className="overflow-hidden rounded-[2rem] relative h-[680px] ">
-              <div className="absolute inset-0">
+            <div className="overflow-hidden rounded-[2rem] relative flex-1 ">
+              <div className="absolute inset-0 hidden md:block">
                 <motion.div
-                  className="h-full w-full"
+                  className="h-full w-full overflow-hidden"
                   transition={{ ease: "easeOut" }}
                   variants={imgVariants}
                 >
                   <Image
-                  placeholder="blur"
-                  blurDataURL={project.blurData}
+                    placeholder="blur"
+                    blurDataURL={project.blurData}
                     priority
                     fill
                     alt={`preview image of ${project.meta.name} project`}
-                    className="hidden md:block object-cover h-full w-full "
+                    className="object-cover h-full w-full "
                     src={project.meta.img}
                   />
                 </motion.div>
@@ -92,7 +89,7 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
                 priority
                 fill
                 alt={`preview image of ${project.meta.name} project`}
-                className="md:hidden object-cover h-full w-full "
+                className="md:hidden object-cover"
                 src={project.meta.img}
               />
 
