@@ -5,7 +5,7 @@ export const metadata = {
   title: "Jacob Schwantes — Projects",
   description: "Take a deep dive into some of my favorite projects.",
   openGraph: {
-    images: ["/og"],
+    images: ["/og?tagline=Projects"],
     title: "Jacob Schwantes — Projects",
     description: "Take a deep dive into some of my favorite projects.",
     url: `https://jsch.me/projects`,
