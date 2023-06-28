@@ -4,10 +4,11 @@ import Header from "./components/Header";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import clsx from "clsx";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  themeColor: "#2563EB",
+  themeColor: "#00000",
   openGraph: {
     images: ["/og"],
   }
@@ -20,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={clsx("max-w-[1920px] mx-auto",inter.className)}>
         <Header />
         {children}
         <CTA />

@@ -4,16 +4,15 @@ import Socials from "./components/Socials";
 import { getProjects } from "./lib/mdxUtils";
 import { convertProjectFiles } from "./lib/imageUtils";
 export const metadata = {
-  title: "Jacob Schwantes | Full-Stack Developer",
+  title: "Jacob Schwantes — Full-Stack Developer",
   description:
     "Transforming complex problems into simple, elegant, and engaging digital experiences",
   openGraph: {
     images: ["/og"],
-    title: "Jacob Schwantes | Full-Stack Developer",
+    title: "Jacob Schwantes — Full-Stack Developer",
     description:
       "Transforming complex problems into simple, elegant, and engaging digital experiences.",
-    url: `https://jsch.me/`,
-    siteName: "jsch.me",
+    url: 'https://jsch.me/',
     locale: "en_US",
     type: "website",
   },
@@ -45,7 +44,7 @@ export default async function Home() {
           <Socials />
         </div>
       </section>
-      <section className="md:px-6 py-10">
+      <section className="md:px-6 px-2 py-10">
         <Projects limit={2} files={withBlurData} />
       </section>
     </main>

@@ -50,7 +50,6 @@ export async function generateMetadata(
       title: meta.name,
       description: meta.description,
       url: `https://jsch.me/projects/${id}`,
-      siteName: 'Jacob Schwantes | Full-Stack Developer',
       locale: 'en_US',
       type: 'website',
     },
@@ -58,7 +57,7 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title: meta.name,
       description: meta.description,
-      images: [`/og?name=${meta.name}&preview=${meta.img}&description=${meta.description}&template=project`],
+      images: [`/og?name=${meta.name}&preview=${meta.img}&description=${meta.description}&template=project&product=${meta.product}`],
     },
   }
 }

@@ -2,23 +2,22 @@ import Projects from "../components/Projects";
 import { getProjects } from "../lib/mdxUtils";
 import { convertProjectFiles } from "../lib/imageUtils";
 export const metadata = {
-  title: "Jacob Schwantes | Projects",
+  title: "Jacob Schwantes — Projects",
   description: "Take a deep dive into some of my favorite projects.",
   openGraph: {
     images: ["/og"],
-    title: "Jacob Schwantes | Projects",
+    title: "Jacob Schwantes — Projects",
     description: "Take a deep dive into some of my favorite projects.",
     url: `https://jsch.me/projects`,
-    siteName: "jsch.me",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jacob Schwantes — Full-Stack Developer',
+    title: 'Jacob Schwantes — Projects',
     description: 'Take a deep dive into some of my favorite projects.',
     creator: '@jacobschwantes',
-    images: ['/og'],
+    images: ['/og?tagline=Projects'],
   },
 };
 export default async function Home() {
