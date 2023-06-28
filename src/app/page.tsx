@@ -4,12 +4,12 @@ import Socials from "./components/Socials";
 import { getProjects } from "./lib/mdxUtils";
 import { convertProjectFiles } from "./lib/imageUtils";
 export const metadata = {
-  title: "Jacob Schwantes — Full-Stack Developer",
+  title: "Jacob Schwantes",
   description:
     "Transforming complex problems into simple, elegant, and engaging digital experiences",
   openGraph: {
     images: ["/og"],
-    title: "Jacob Schwantes — Full-Stack Developer",
+    title: "Jacob Schwantes",
     description:
       "Transforming complex problems into simple, elegant, and engaging digital experiences.",
     url: 'https://jsch.me/',
@@ -18,7 +18,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jacob Schwantes — Full-Stack Developer',
+    title: 'Jacob Schwantes',
     description: 'Transforming complex problems into simple, elegant, and engaging digital experiences.',
     creator: '@jacobschwantes',
     images: ['/og'],

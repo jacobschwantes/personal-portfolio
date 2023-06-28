@@ -46,7 +46,7 @@ export async function generateMetadata(
     title: meta.name,
     description: meta.description,
     openGraph: {
-      images: [`/og?name=${meta.name}&preview=${meta.img}&description=${meta.description}&template=project`, ],
+      images: [`/og?name=${meta.name}&preview=${meta.img}&description=${meta.description}&template=project&product=${meta.product}`, ],
       title: meta.name,
       description: meta.description,
       url: `https://jsch.me/projects/${id}`,

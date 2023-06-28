@@ -1,5 +1,24 @@
 import type { NextPage } from "next";
 import ContactForm from "@/app/components/ContactForm";
+export const metadata = {
+  title: "Jacob Schwantes — Contact",
+  description: "Let's collaborate! Get in touch with me to discuss your next project.",
+  openGraph: {
+    images: ["/og?tagline=Contact"],
+    title: "Jacob Schwantes — Contact",
+    description: "Let's collaborate! Get in touch with me to discuss your next project.",
+    url: `https://jsch.me/contact`,
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Jacob Schwantes — Contact',
+    description: "Let's collaborate! Get in touch with me to discuss your next project.",
+    creator: '@jacobschwantes',
+    images: ['/og?tagline=Contact'],
+  },
+};
 interface PageProps {}
 const Home: NextPage<PageProps> = ({}) => {
   return (
