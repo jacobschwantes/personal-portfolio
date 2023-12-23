@@ -1,11 +1,10 @@
 export type Project = {
   slug: string;
-  meta: Meta;
+  meta: ProjectMeta;
   content?: string;
-  blurData?: string;
 };
 
-export type Meta = {
+export type ProjectMeta = {
   name: string;
   description: string;
   year: number;
@@ -15,4 +14,18 @@ export type Meta = {
   assets: string[];
   live?: string;
   github?: string;
+};
+
+
+export type BlogPost = {
+  slug: string;
+  meta: BlogMeta;
+  source: any;
+};
+
+export type BlogMeta = {
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
 };
