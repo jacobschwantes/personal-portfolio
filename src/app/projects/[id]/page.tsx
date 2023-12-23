@@ -1,67 +1,27 @@
 import type { NextPage } from "next";
 import path from "path";
 import fs from "fs";
-import { getProject } from "@/app/lib/mdxUtils";
-import MDXContent from "@/app/lib/mdxContent";
+import { getProject } from "@/lib/mdx-utils";
+import { ImageCarousel } from "@/components/ui/carousel";
+import Projects from "@/components/projects";
 import Link from "next/link";
-import { WindowIcon } from "@heroicons/react/24/solid";
-import { getPlaiceholder } from "plaiceholder";
-import { Metadata } from "next";
-import ScrollToButton from "@/app/components/ScrollToButton";
-const GithubIcon = (props: { className: string }) => (
-  <svg fill="currentColor" {...props} viewBox="0 0 24 24">
-    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-  </svg>
-);
+import { GitHubLogoIcon, LightningBoltIcon } from "@radix-ui/react-icons";
+import SectionHeader from "@/components/section-header";
 
-const getBase64Data = async (assets: string[]) => {
-  const base64Data = [];
-  for (const asset of assets) {
-    const buffer = await fetch(asset).then(async (res) =>
-      Buffer.from(await res.arrayBuffer())
-    );
-    const { base64 } = await getPlaiceholder(buffer);
-    const path = asset.split("/").slice(-1)[0];
-    base64Data.push({ path, dataUrl: base64 });
-  }
+import type { Metadata } from "next";
 
-  return base64Data;
-};
 type Props = {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata({
-  params,
-  searchParams,
-}: Props): Promise<Metadata> {
-  // read route params
-  const id = params.id;
-
-  // fetch data
-  const { meta, source, slug } = await getProject(params.id);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { meta } = await getProject(params.id);
 
   return {
-    title: meta.name,
+    title: `${meta.name} | Jacob Schwantes`,
     description: meta.description,
     openGraph: {
-      images: [
-        `/og?name=${meta.name}&preview=${meta.img}&description=${meta.description}&template=project&product=${meta.product}`,
-      ],
-      title: meta.name,
-      description: meta.description,
-      url: `https://jsch.me/projects/${id}`,
-      locale: "en_US",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: meta.name,
-      description: meta.description,
-      images: [
-        `/og?name=${meta.name}&preview=${meta.img}&description=${meta.description}&template=project&product=${meta.product}`,
-      ],
+      images: [`/og/projects?id=${meta.name}&description=${meta.description}`],
     },
   };
 }
@@ -70,73 +30,80 @@ interface PageProps {
   params: { id: string };
 }
 const Home: NextPage<PageProps> = async ({ params }) => {
-  const { meta, source, slug } = await getProject(params.id);
-  const blurData = await getBase64Data(meta.assets);
+  const { meta, content, slug } = await getProject(params.id);
+  const images = meta.images.map(
+    (filename) => `/images/projects/${slug}/${filename}`
+  );
 
   return (
-    <main className="flex min-h-screen flex-col justify-between py-24">
-      <div className="w-full mx-auto md:px-6 px-2 md:py-18 space-y-24">
-        <section className="md:px-24 px-4 flex flex-col md:flex-row space-y-5 md:space-y-0 justify-between">
-          <div className="text-left max-w-4xl space-y-10 md:space-y-14 ">
-            <span className="space-y-4">
-              <h1 className="md:text-4xl text-2xl text-white font-medium leading-tight">
-                {meta.name}
-              </h1>
-              <p className="text-zinc-300 md:text-lg font-light">
-                {meta.description}
-              </p>
-            </span>
-            <div className="flex flex-col md:flex-row md:space-x-20 md:text-lg space-y-5 md:space-y-0">
-              <span className="md:space-y-4 space-y-1">
-                <h2 className="text-white md:font-medium md:text-2xl ">Year</h2>
-                <p className="text-zinc-300 font-light">{meta.year}</p>
-              </span>
-              <span className="md:space-y-4 space-y-1">
-                <h2 className="text-white md:font-medium md:text-2xl ">
-                  Product
-                </h2>
-                <p className="text-zinc-300 font-light">{meta.product}</p>
-              </span>
-              <span className="md:space-y-4 space-y-1">
-                <h2 className="text-white md:font-medium md:text-2xl ">
-                  Technologies
-                </h2>
-                <p className="text-zinc-300 font-light">{meta.technolgies}</p>
-              </span>
-            </div>
+    <main className="flex flex-col py-8 gap-16 max-w-7xl mx-auto">
+      {meta.draft && (
+        <div className="w-full">
+          <SectionHeader title="This is a draft" />
+        </div>
+      )}
+      <section className=" flex flex-col md:flex-row space-y-5 md:space-y-0 justify-between items-start">
+        <div className="space-y-2">
+          <h1 className="md:text-3xl text-2xl  font-medium leading-tight text-zinc-900 dark:text-zinc-200">
+            {meta.name}
+          </h1>
+          <p className=" md:text-lg text-zinc-600 dark:text-zinc-300">
+            {meta.description}
+          </p>
+        </div>
+      </section>
+      <section className="flex flex-col gap-16">
+        <ImageCarousel images={images} />
+      </section>
+      <section>
+        <div className="flex  gap-2">
+          {meta.demo && (
+            <Link
+              target="_blank"
+              className="flex items-center gap-1.5 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 dark:text-zinc-300 text-zinc-800 px-3 py-1.5 rounded-lg font-medium hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-all duration-300"
+              href={meta.demo}
+            >
+              <LightningBoltIcon className="w-4 h-4" /> Demo
+            </Link>
+          )}
+          {meta.repo && (
+            <Link
+              target="_blank"
+              className="flex items-center gap-1.5 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 dark:text-zinc-300 text-zinc-800 px-3 py-1.5 rounded-lg font-medium hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-all duration-300"
+              href={meta.repo}
+            >
+              <GitHubLogoIcon className="  h-4 w-4 " /> Code
+            </Link>
+          )}
+        </div>
+      </section>
+      <section className="prose  mx-auto dark:prose-invert prose-headings:font-medium dark:prose-headings:text-zinc-200 prose-headings:text-zinc-800 max-w-none">
+        {content}
+      </section>
+      <section className=" border-zinc-200 flex flex-col items-start py-6 gap-16 ">
+        <div className="flex justify-between items-start w-full">
+          <div className="grid grid-cols-2 w-auto flex-shrink gap-x-8 gap-y-1">
+            <p className=" font-medium text-zinc-900 dark:text-zinc-300">
+              Platform
+            </p>
+            <p className="text-zinc-600  dark:text-zinc-400">{meta.platform}</p>
+            <p className=" font-medium text-zinc-900 dark:text-zinc-300">
+              Stack
+            </p>
+            <p className="text-zinc-600 dark:text-zinc-400 ">{meta.stack}</p>
+            {/* <p className=" font-medium text-zinc-900">Tags</p>
+            <p className="text-zinc-600 ">{meta.tags}</p> */}
           </div>
-          <div className="flex items-start space-x-2">
-            {meta.github && (
-              <Link
-                target="_blank"
-                rel="noreferrer"
-                className={"bg-zinc-800 rounded-full p-3 group"}
-                href={meta.github}
-              >
-                <GithubIcon className="w-5 h-5 text-zinc-500 group-hover:text-blue-600 transition-colors duration-300" />
-              </Link>
-            )}
-            {meta.live && (
-              <Link
-                target="_blank"
-                rel="noreferrer"
-                className="bg-zinc-800 rounded-full p-3 group"
-                href={meta.live}
-              >
-                <WindowIcon className="w-5 h-5 text-zinc-500 group-hover:text-blue-600 transition-colors duration-300" />
-              </Link>
-            )}
-          </div>
-        </section>
-        <section className="md:px-4 space-y-2 md:space-y-6 ">
-          <MDXContent blurData={blurData} source={source} />
-        </section>
-        <section className="w-full">
-          <ScrollToButton element="#top" duration={1000}>
-            Scroll to top
-          </ScrollToButton>
-        </section>
-      </div>
+        </div>
+        <div className="w-full flex flex-col gap-6">
+          <SectionHeader
+            title="More projects"
+            href="/projects"
+            buttonLabel="All"
+          />
+          <Projects currentProject={slug} random limit={2} />
+        </div>
+      </section>
     </main>
   );
 };

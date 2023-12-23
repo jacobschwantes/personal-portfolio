@@ -1,56 +1,23 @@
 ---
+draft: false
+priority: 2
 name: "Screenshotify"
+description: "Screenshot API"
 product: "Screenshot API"
-technolgies: "React, Puppeteer, Node, Express, Firebase"
-description: "Programmatically capture high-resolution screenshots of websites."
-year: 2022
-img: "https://res.cloudinary.com/dxgbphyhg/image/upload/v1687568046/portfolio%20assets/screenshotify/preview.jpg"
-assets: ["https://res.cloudinary.com/dxgbphyhg/image/upload/v1687568046/portfolio%20assets/screenshotify/dashboard.jpg", "https://res.cloudinary.com/dxgbphyhg/image/upload/v1687568046/portfolio%20assets/screenshotify/history.jpg", "https://res.cloudinary.com/dxgbphyhg/image/upload/v1687568260/portfolio%20assets/screenshotify/landing.jpg"]
-live: "https://www.screenshotify.app/"
+stack: "React, Next.js, Puppeteer, Express, Firebase, Google Cloud Platform"
+platform: "Web"
+images: ["preview.png", "token-settings.jpg", "dashboard.jpg", "history.jpg", "tokens.jpg"]
+demo: "https://www.screenshotify.app/"
 ---
-
-<Image path="dashboard.jpg" alt="Screenshot of usage chart visualization" src="https://res.cloudinary.com/dxgbphyhg/image/upload/v1687568046/portfolio%20assets/screenshotify/dashboard.jpg" />
-<Card>
-  # Details
-  <Grid cols="2">
-    <Block>
-      ## Problem 
-      Users often need to take screenshots of various websites for different purposes, whether it be for testing, record-keeping, design work, or content creation. However, current implementations are lacking in either affordability, features, or performance.
-    </Block>
-    <Block>
-      ## Constraints
-      Since affordability is a key factor, the solution must be cost efficient to run and maintain. The solution must also be able to offer more advanced features than current implementations, and be able to do so quickly and reliably.
-    </Block>
-
-  </Grid>
-</Card>
-
-<Image path="history.jpg" alt="Screenshot of request history page" src="https://res.cloudinary.com/dxgbphyhg/image/upload/v1687568046/portfolio%20assets/screenshotify/history.jpg" />
-<Card>
-  # Process
-  <Grid cols="2">
-    <Block>
-      ## Objectives 
-      The primary objectives were to create a cost-efficient and performant solution that allows users to take screenshots of websites effortlessly and to develop a clean, minimalist dashboard for efficient API token management, request history tracking, and usage chart visualization.
-    </Block>
-    <Block>
-      ## Challenges 
-      Major challenges included ensuring the API could accurately render and capture diverse websites, maintaining a seamless user experience amidst the complexity of the back-end processes, and designing a comprehensive yet minimalist dashboard that offered powerful functionality without overwhelming the user.
-    </Block>
-
-  </Grid>
-</Card>
-<Image path="landing.jpg" alt="Screenshot of landing page" src="https://res.cloudinary.com/dxgbphyhg/image/upload/v1687568260/portfolio%20assets/screenshotify/landing.jpg" />
-<Card>
-  # Conclusion
-  <Grid cols="1">
-    <Block>
-      ## Approach 
-      To minimize computational overhead, I leveraged serverless functions deployed on Google Cloud Platform where you only pay for active execution time. This also allowed for easy horizontal scaling to effectively handle dynamic user loads. To ensure accurate rendering, I chose Puppeteer as my headless browser for its extensive features and maintainability.
-    </Block>
-    <Block>
-      ## Final Thoughts 
-      This project was a great learning experience for me as it allowed me to explore the world of serverless computing and headless browsers. I also learned a lot about designing a clean and intuitive dashboard that offers powerful functionality without overwhelming the user. I plan to continue working on this project to add more features and to improve the user experience.
-    </Block>
-  </Grid>
-</Card>
+## Screenshotify: Capturing the Web
+Screenshotify is a tool that simplifies the process of capturing high-resolution screenshots of web pages. 
+Born out of a need to quickly render responsive websites as images, it leverages a virtual browser environment to efficiently render pages and capture screenshots.
+## Behind the Scenes
+Built with a focus on user experience, Screenshotify offers a comprehensive dashboard for managing usage stats, history logs, and access keys. 
+The tool incorporates features like persistant cloud storage, SSL termination, high availability through horizontally scaled serverless functions, and fine-grained access key control. 
+## Performance improvements
+Optimizing Screenshotify presented unique challenges, particularly in enhancing performance. 
+One key improvement was the integration of an ad blocker, which considerably increased page load speeds. 
+Another crucial aspect involved refining the process for API key quota look-ups which
+helped reduce database reads and minimized network round trips, improving the overall efficiency and responsiveness of the service. 
+These improvements were the easiest to implement but further optimization can be done to improve the performance of page loads as that is the biggest souce of latency in the application.

@@ -1,18 +1,12 @@
-import CTA from "./components/CTA";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from "../components/footer";
+import Header from "@/components/header";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import clsx from "clsx";
-const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  themeColor: "#00000",
-  openGraph: {
-    images: ["/og"],
-  }
-}
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -21,12 +15,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx("max-w-[1920px] mx-auto",inter.className)}>
+      <body
+        className={clsx(
+          "max-w-3xl mx-auto dark:bg-zinc-900",
+          inter.className
+        )}
+      >
         <Header />
         {children}
-        <CTA />
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
