@@ -78,7 +78,7 @@ export default async function Home() {
         <SectionHeader title="Blog" href="/blog" buttonLabel="All posts" />
         <ul className="grid">
           {blogPosts.map((post) => (
-            <li className="flex justify-between items-center gap-3 group hover:bg-neutral-700/10 transition-all  p-2  rounded-md cursor-pointer">
+            <li key={post.title} className="flex justify-between items-center gap-3 group hover:bg-neutral-700/10 transition-all  p-2  rounded-md cursor-pointer">
               <span className="  block bg-yellow-400 h-[75%] my-auto w-[1px] rounded-full"></span>{" "}
               <div className="flex justify-between gap-2 w-full ">
                 <h3 className="text-zinc-300">{post.title}</h3>

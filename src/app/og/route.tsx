@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 
 const regularFont = fetch(
   new URL("../../assets/fonts/Inter-Regular.woff", import.meta.url)
