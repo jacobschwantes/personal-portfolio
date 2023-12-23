@@ -1,4 +1,3 @@
-import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
@@ -21,10 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx("max-w-[1920px] mx-auto",inter.className)}>
+      <body className={clsx("max-w-2xl mx-auto bg-neutral-900" ,inter.className)}>
         <Header />
         {children}
-        <CTA />
         <Footer />
         <Analytics />
       </body>

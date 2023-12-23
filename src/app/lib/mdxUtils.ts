@@ -2,7 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
-import type {Meta, Project} from "@customTypes/projectTypes"
+import type {ProjectMeta, Project} from "@customTypes/projectTypes"
 
 
 const filepath = "src/content/projects";
@@ -15,7 +15,7 @@ export const getProjects = (): Project[] => {
     const { data: frontMatter } = matter(fileContent);
 
     return {
-      meta: frontMatter as Meta,
+      meta: frontMatter as ProjectMeta,
       slug: filename.replace(".mdx", ""),
     };
   });
@@ -33,7 +33,7 @@ export const getProject = async (slug: string) => {
   });
 
   return {
-    meta: source.frontmatter as Meta,
+    meta: source.frontmatter as ProjectMeta,
     slug,
     source
   };

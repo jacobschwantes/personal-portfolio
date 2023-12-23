@@ -1,10 +1,15 @@
-import withPlaiceholder from "@plaiceholder/next";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["res.cloudinary.com"],
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "res.cloudinary.com"
+    }],
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "avatars.githubusercontent.com"
+    }],
   },
 };
 
-export default withPlaiceholder(nextConfig);
+export default nextConfig;
