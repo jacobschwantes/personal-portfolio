@@ -1,25 +1,8 @@
-"use client";
 import { NextPageContext, NextComponentType } from "next";
-import { motion } from "framer-motion";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import type { Project } from "@customTypes/projectTypes";
+import type { Project } from "../../../types";
 import Image from "next/image";
-
-const imgVariants = {
-  rest: {
-    scale: 1.1,
-  },
-  hover: { scale: 1.15 },
-};
-const taglineVariants = {
-  rest: {
-    bottom: -50,
-  },
-  hover: { bottom: 20 },
-};
 
 interface ProjectsProps {
   wide?: boolean;
@@ -31,83 +14,36 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
   files,
   limit,
 }) => {
-  const [hoverTarget, setHoverTarget] = useState("");
   return (
     <div
       className={clsx(
         wide ? "grid-cols-1" : "md:grid-cols-2 grid-cols-1",
-        "grid gap-6"
+        "grid gap-8"
       )}
     >
       {files.slice(0, limit ?? files.length).map((project, i) => (
         <Link key={project.slug} href={`projects/${project.slug}`}>
-          <motion.div
-            onHoverStart={() => setHoverTarget(project.meta.name)}
-            onHoverEnd={() => setHoverTarget("")}
-            initial="rest"
-            whileHover="hover"
-            animate="rest"
-            className="border-2 border-zinc-900 rounded-[2rem] group cursor-pointer flex flex-col overflow-hidden h-[680px]"
-          >
-            <div className="flex justify-between px-6 py-8 text-2xl ">
-              <div className="flex items-center md:space-x-2">
-                {project.meta.name === hoverTarget && (
-                  <motion.div
-                    className="hidden md:block "
-                    initial={{ scale: 0, x: 0 }}
-                    animate={{ scale: 1, x: 0 }}
-                    transition={{ ease: "easeOut" }}
-                  >
-                    <ArrowRightIcon className="h-8 text-white rotate-[-45deg]" />
-                  </motion.div>
-                )}
-                <motion.h2 key="project" layout className="">
-                  {project.meta.name}
-                </motion.h2>
-              </div>
-              <p className="">{project.meta.year}</p>
-            </div>
-            <div className="overflow-hidden rounded-[2rem] relative flex-1 ">
-              <div className="absolute inset-0 hidden md:block">
-                <motion.div
-                  className="h-full w-full overflow-hidden"
-                  transition={{ ease: "easeOut" }}
-                  variants={imgVariants}
-                >
-                  <Image
-                    placeholder="blur"
-                    blurDataURL={project.blurData}
-                    priority
-                    fill
-                    alt={`preview image of ${project.meta.name} project`}
-                    className="object-cover h-full w-full "
-                    src={project.meta.img}
-                  />
-                </motion.div>
-              </div>
+          <div className=" bg-zinc-100 rounded-[2rem] group flex flex-col overflow-hidden w-full aspect-square">
+            <div className="overflow-hidden rounded-[2rem] relative flex-1 group-hover:scale-[1.03] ease-out transition-all duration-500  ">
               <Image
                 priority
                 fill
                 alt={`preview image of ${project.meta.name} project`}
-                className="md:hidden object-cover"
+                className="object-cover h-full w-full  group-hover:saturate-125 group-hover:brightness-100 brightness-[99%] transitional duration-500 ease-out"
                 src={project.meta.img}
               />
-
-              <motion.p
-                style={{ left: 20 }}
-                variants={taglineVariants}
-                className="px-4 py-2 border border-zinc-800 rounded-full bg-black absolute hidden md:block"
-              >
-                {project.meta.product}
-              </motion.p>
-              <p
-                style={{ left: 20, bottom: 20 }}
-                className="px-4 py-2 border border-zinc-800 rounded-full bg-black absolute md:hidden"
-              >
-                {project.meta.product}
-              </p>
             </div>
-          </motion.div>
+            <div className="flex flex-col p-10 gap-3  ">
+              <h3 className="font-medium text-3xl">{project.meta.name}</h3>
+              <ul className="flex gap-2">
+                {project.meta.tags.map((tag) => (
+                  <li className="badge-light" key={tag}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </Link>
       ))}
     </div>

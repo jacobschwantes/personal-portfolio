@@ -21,11 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx("max-w-[1920px] mx-auto",inter.className)}>
+      <body className={clsx(" flex flex-col gap-y-12",inter.className)}>
         <Header />
         {children}
-        <CTA />
-        <Footer />
+        {/* <CTA /> */}
+        {/* <Footer /> */}
         <Analytics />
       </body>
     </html>

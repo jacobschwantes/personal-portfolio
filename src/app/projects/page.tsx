@@ -1,6 +1,5 @@
 import Projects from "../components/Projects";
 import { getProjects } from "../lib/mdxUtils";
-import { convertProjectFiles } from "../lib/imageUtils";
 export const metadata = {
   title: "Jacob Schwantes — Projects",
   description: "Take a deep dive into some of my favorite projects.",
@@ -22,7 +21,6 @@ export const metadata = {
 };
 export default async function Home() {
   const projectFiles = getProjects();
-  const withBlurData = await convertProjectFiles(projectFiles);
   return (
     <main className="flex min-h-screen flex-col justify-between md:py-24 py-14">
       <div className="w-full mx-auto md:px-6 md:py-18  space-y-24">
@@ -33,7 +31,7 @@ export default async function Home() {
           </p>
         </section>
         <section className=" md:px-4 px-2">
-          <Projects files={withBlurData} wide />
+          <Projects files={projectFiles} wide />
         </section>
       </div>
     </main>

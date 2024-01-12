@@ -11,6 +11,7 @@ export type Meta = {
   year: number;
   product: string;
   technolgies: string;
+  tags: string[];
   img: string;
   assets: string[];
   live?: string;

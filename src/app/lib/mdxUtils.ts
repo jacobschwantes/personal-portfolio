@@ -2,7 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
-import type {Meta, Project} from "@customTypes/projectTypes"
+import type {Meta, Project} from "../../../types"
 
 
 const filepath = "src/content/projects";

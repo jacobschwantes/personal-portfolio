@@ -50,7 +50,7 @@ export async function GET(request: Request) {
           <div tw="w-1/2 flex items-center h-full p-14">
             <img
               alt="preview of project"
-              tw="w-full h-full rounded-[2rem]"
+              tw="w-full h-full rounded-3xl"
               //@ts-ignore
               src={projectImageSrc || imgData}
             />
