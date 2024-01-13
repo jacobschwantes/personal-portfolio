@@ -1,7 +1,6 @@
 import { NextPageContext, NextComponentType } from "next";
 import clsx from "clsx";
 import Link from "next/link";
-import type { Project } from "../../../types";
 import Image from "next/image";
 
 interface ProjectsProps {

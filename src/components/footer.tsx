@@ -1,6 +1,6 @@
 import { NextComponentType, NextPageContext } from "next";
 import Link from "next/link";
-import Socials from "./Socials";
+import Socials from "./social-links";
 
 interface FooterProps {}
 

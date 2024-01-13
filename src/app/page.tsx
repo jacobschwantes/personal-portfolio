@@ -1,30 +1,8 @@
-import CustomLink from "./components/CustomLink";
-import Projects from "./components/Projects";
-import Socials from "./components/Socials";
-import { getProjects } from "./lib/mdxUtils";
-import SectionHeader from "./components/SectionHeader";
-export const metadata = {
-  title: "Jacob Schwantes",
-  description:
-    "Transforming complex problems into simple, elegant, and engaging digital experiences",
-  openGraph: {
-    images: ["/og"],
-    title: "Jacob Schwantes",
-    description:
-      "Transforming complex problems into simple, elegant, and engaging digital experiences.",
-    url: "https://jsch.me/",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Jacob Schwantes",
-    description:
-      "Transforming complex problems into simple, elegant, and engaging digital experiences.",
-    creator: "@jacobschwantes",
-    images: ["/og"],
-  },
-};
+import Projects from "../components/projects";
+import Socials from "../components/social-links";
+import { getProjects } from "@/lib/mdx-utils";
+import SectionHeader from "../components/section-header";
+
 export default async function Home() {
   const projectFiles = await getProjects();
   return (

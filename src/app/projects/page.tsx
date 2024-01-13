@@ -1,26 +1,8 @@
-import Projects from "../components/Projects";
-import { getProjects } from "../lib/mdxUtils";
-export const metadata = {
-  title: "Jacob Schwantes — Projects",
-  description: "Take a deep dive into some of my favorite projects.",
-  openGraph: {
-    images: ["/og?tagline=Projects"],
-    title: "Jacob Schwantes — Projects",
-    description: "Take a deep dive into some of my favorite projects.",
-    url: `https://jsch.me/projects`,
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Jacob Schwantes — Projects',
-    description: 'Take a deep dive into some of my favorite projects.',
-    creator: '@jacobschwantes',
-    images: ['/og?tagline=Projects'],
-  },
-};
+import Projects from "../../components/projects";
+import { getProjects } from "@/lib/mdx-utils";
+
 export default async function Home() {
-  const projectFiles = getProjects();
+  const projectFiles = await getProjects();
   return (
     <main className="flex min-h-screen flex-col justify-between md:py-24 py-14">
       <div className="w-full mx-auto md:px-6 md:py-18  space-y-24">

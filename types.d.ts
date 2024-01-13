@@ -1,11 +1,24 @@
-export type Project = {
+type Project = {
   slug: string;
-  meta: Meta;
-  content?: string;
-  blurData?: string;
+  meta: ProjectMeta;
+  source: MDXRemoteSerializeResult<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >;
 };
 
-export type Meta = {
+type Blog = {
+  slug: string;
+  meta: BlogMeta;
+  source: MDXRemoteSerializeResult<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >;
+};
+
+type Meta = ProjectMeta | BlogMeta;
+
+type ProjectMeta = {
   name: string;
   description: string;
   year: number;
@@ -16,4 +29,14 @@ export type Meta = {
   assets: string[];
   live?: string;
   github?: string;
+};
+
+type BlogMeta = {
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  img: string;
+  assets: string[];
+  slug: string;
 };

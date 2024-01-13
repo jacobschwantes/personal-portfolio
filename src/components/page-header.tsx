@@ -1,9 +1,6 @@
 "use client";
 import { NextComponentType, NextPageContext } from "next";
 import Link from "next/link";
-import Navigation from "./Navigation";
-import Image from "next/image";
-import { useRouter } from "next/router";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
@@ -55,8 +52,8 @@ const Header: NextComponentType<NextPageContext, {}, ComponentProps> = ({}) => {
                   {item.name}
                   <span
                     className={clsx(
-                      "block h-[1.5px] w-full bg-zinc-700 transition-all duration-300 ease-out",
-                      pathname === item.path ? "scale-x-100" : "group-hover:scale-x-100 scale-x-0"
+                      "block h-[1px] w-full bg-zinc-700 transition-all duration-300 ease-out",
+                      pathname === item.path ? "scale-x-95" : "group-hover:scale-x-95 scale-x-0"
                     )}
                   ></span>
                 </Link>
@@ -65,7 +62,7 @@ const Header: NextComponentType<NextPageContext, {}, ComponentProps> = ({}) => {
           </ul>
         </nav>
         <div className="md:hidden">
-          <Navigation routes={routes} />
+          {/* TODO: Make mobile nav */}
         </div>
       </div>
     </header>
