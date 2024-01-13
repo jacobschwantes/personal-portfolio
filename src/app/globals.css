@@ -10,3 +10,6 @@
     @apply border rounded-full px-3 py-0.5  text-zinc-700  border-zinc-500 text-sm;
   }
 }
+:root {
+  --gap: 4.5rem;
+}

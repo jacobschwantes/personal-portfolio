@@ -14,7 +14,7 @@ const SectionHeader: NextComponentType<
     <h2 className="tracking-[.25em] text-zinc-700 uppercase">{title}</h2>
     {href && (
       <Link
-        className="tracking-[.1em] text-zinc-700  uppercase group transition-all duration-300 flex"
+        className="tracking-[.1em] text-zinc-700  uppercase group transition-all duration-300 flex items-center"
         href={href}
       >
         {buttonLabel ?? "All"}
@@ -22,7 +22,7 @@ const SectionHeader: NextComponentType<
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-5 h-5 ml-1 group-hover:text-yellow-400"
+          className="w-6 h-6 ml-1 group-hover:translate-x-1 transition-all duration-300 ease-out"
         >
           <path
             fillRule="evenodd"

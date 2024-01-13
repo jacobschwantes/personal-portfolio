@@ -2,11 +2,12 @@ import Projects from "../components/projects";
 import Socials from "../components/social-links";
 import { getProjects } from "@/lib/mdx-utils";
 import SectionHeader from "../components/section-header";
+import Blogs from "@/components/blogs";
 
 export default async function Home() {
   const projectFiles = await getProjects();
   return (
-    <main className="flex flex-col gap-y-12 max-w-7xl mx-auto w-full ">
+    <main className="flex flex-col gap-[--gap] max-w-7xl mx-auto w-full ">
       <section className="flex justify-between items-center gap-10 w-full py-14">
         <div>
           <h1 className="text-8xl text-zinc-950 font-medium whitespace-pre tracking-tighter">
@@ -31,6 +32,14 @@ export default async function Home() {
           href="/projects"
         />
         <Projects limit={4} files={projectFiles} />
+      </section>
+      <section className="">
+        <SectionHeader
+          title="Blog"
+          buttonLabel="All posts"
+          href="/blog"
+        />
+        <Blogs />
       </section>
     </main>
   );

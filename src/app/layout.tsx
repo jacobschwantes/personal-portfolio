@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
+import Footer from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -12,10 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(" flex flex-col gap-y-12",inter.className)}>
+      <body className={clsx(" flex flex-col gap-[--gap]",inter.className)}>
         <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
         <Analytics />
       </body>
    </html>
