@@ -10,11 +10,11 @@ const SectionHeader: NextComponentType<
   {},
   SectionHeaderProps
 > = ({ title, href, buttonLabel }) => (
-  <div className="flex justify-between py-6">
-    <h2 className="tracking-[.25em] text-zinc-700 uppercase">{title}</h2>
+  <div className="flex justify-between items-center py-6">
+    <h2 className="tracking-[.25em] text-zinc-700 uppercase sm:text-base text-sm">{title}</h2>
     {href && (
       <Link
-        className="tracking-[.1em] text-zinc-700  uppercase group transition-all duration-300 flex items-center"
+        className="tracking-[.1em] text-zinc-700  uppercase group transition-all duration-300 flex items-center sm:text-base text-sm"
         href={href}
       >
         {buttonLabel ?? "All"}

@@ -17,13 +17,13 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
     <div
       className={clsx(
         wide ? "grid-cols-1" : "md:grid-cols-2 grid-cols-1",
-        "grid gap-8"
+        "grid sm:gap-4 gap-8"
       )}
     >
       {files.slice(0, limit ?? files.length).map((project, i) => (
         <Link key={project.slug} href={`projects/${project.slug}`}>
-          <div className=" bg-zinc-100 rounded-[2rem] group flex flex-col overflow-hidden w-full aspect-square">
-            <div className="overflow-hidden rounded-[2rem] relative flex-1 group-hover:scale-[1.03] ease-out transition-all duration-500  ">
+          <div className=" bg-zinc-100 md:rounded-[2rem] rounded-3xl group flex flex-col overflow-hidden w-full aspect-square">
+            <div className="overflow-hidden md:rounded-[2rem] rounded-3xl relative flex-1 group-hover:scale-[1.03] ease-out transition-all duration-500  ">
               <Image
                 priority
                 fill
@@ -32,8 +32,8 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = ({
                 src={project.meta.img}
               />
             </div>
-            <div className="flex flex-col p-10 gap-3  ">
-              <h3 className="font-medium text-3xl">{project.meta.name}</h3>
+            <div className="flex flex-col lg:p-10 p-4 gap-3  ">
+              <h3 className="font-medium md:text-3xl text-2xl">{project.meta.name}</h3>
               <ul className="flex gap-2">
                 {project.meta.tags.map((tag) => (
                   <li className="badge-light" key={tag}>

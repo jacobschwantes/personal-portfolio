@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(" flex flex-col gap-[--gap]",inter.className)}>
+      <body className={clsx(" flex flex-col md:gap-[--gap] gap-[--gap-sm]",inter.className)}>
         <Header />
         {children}
         <Footer />

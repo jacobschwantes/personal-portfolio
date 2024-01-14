@@ -7,18 +7,18 @@ import Blogs from "@/components/blogs";
 export default async function Home() {
   const projectFiles = await getProjects();
   return (
-    <main className="flex flex-col gap-[--gap] max-w-7xl mx-auto w-full ">
-      <section className="flex justify-between items-center gap-10 w-full py-14">
-        <div>
-          <h1 className="text-8xl text-zinc-950 font-medium whitespace-pre tracking-tighter">
+    <main className="flex flex-col md:gap-[--gap] gap-[--gap-sm] max-w-7xl mx-auto w-full xl:px-0 px-4">
+      <section className="flex lg:justify-between  lg:text-left  items-start md:gap-12 gap-4  w-full flex-col lg:flex-row">
+        <div className="gap-2 flex flex-col justify-between">
+          <h1 className="xl:text-8xl sm:text-7xl text-5xl text-zinc-950 font-medium lg:whitespace-pre tracking-tighter">
             Jacob Schwantes
           </h1>
-          <h2 className="text-4xl text-zinc-600 whitespace-pre">
+          <h2 className="xl:text-5xl sm:text-4xl text-2xl text-zinc-600 whitespace-pre">
             Software Engineer
           </h2>
         </div>
-        <div className="text-right  gap-3 flex flex-col justify-between w-full items-end pt-4">
-          <p className="text-zinc-800  text-2xl w-full">
+        <div className="lg:text-right md:max-w-lg max-w-none gap-4 flex flex-col justify-between h-full w-full lg:items-end lg:pt-2">
+          <p className="text-zinc-800 md:text-2xl sm:text-xl text-lg w-full">
             Transforming complex problems into simple, elegant, and engaging
             digital experiences.
           </p>
@@ -34,12 +34,8 @@ export default async function Home() {
         <Projects limit={4} files={projectFiles} />
       </section>
       <section className="">
-        <SectionHeader
-          title="Blog"
-          buttonLabel="All posts"
-          href="/blog"
-        />
-        <Blogs />
+        <SectionHeader title="Blog" buttonLabel="All posts" href="/blog" />
+        <Blogs limit={3} />
       </section>
     </main>
   );

@@ -1,3 +1,5 @@
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+
 type Project = {
   slug: string;
   meta: ProjectMeta;
