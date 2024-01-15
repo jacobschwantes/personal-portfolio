@@ -1,5 +1,5 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from "../components/footer";
+import Header from "@/components/header";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -7,10 +7,7 @@ import clsx from "clsx";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  themeColor: "#00000",
-  openGraph: {
-    images: ["/og"],
-  }
+
 }
 
 export default function RootLayout({
@@ -20,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx("max-w-2xl mx-auto bg-neutral-900" ,inter.className)}>
+      <body className={clsx("max-w-3xl mx-auto dark:bg-neutral-900" ,inter.className)}>
         <Header />
         {children}
         <Footer />
