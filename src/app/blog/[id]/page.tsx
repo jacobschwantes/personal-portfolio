@@ -29,7 +29,7 @@ export default Home;
 const NewsletterSubscribeForm = () => {
   return (
     <form className="flex flex-col gap-5">
-      <p className="text-zinc-600 ">Get notified when I publish new posts.</p>
+      <p className="text-zinc-600 ">Get notified when I publish new things.</p>
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input type="email" placeholder="Email" />
         <Button type="submit">Subscribe</Button>

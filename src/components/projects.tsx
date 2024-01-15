@@ -39,7 +39,7 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = async ({
               <p className="text-sm text-zinc-600 relative z-10">
                 {project.meta.description}
               </p>
-              <div className="bg-zinc-100 inset-0 absolute blur"></div>
+              <div className="bg-zinc-100 inset-0 absolute blur-xl"></div>
             </div>
           </div>
         </Link>

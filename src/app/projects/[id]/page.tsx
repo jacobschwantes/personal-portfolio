@@ -11,6 +11,7 @@ import {
   GitHubLogoIcon,
   LightningBoltIcon,
 } from "@radix-ui/react-icons";
+import SectionHeader from "@/components/section-header";
 
 interface PageProps {
   params: { id: string };
@@ -68,7 +69,7 @@ const Home: NextPage<PageProps> = async ({ params }) => {
           </div>
         </div>
         <div className="w-full flex flex-col gap-6">
-          <h2 className="font-medium text-lg">More projects</h2>
+          <SectionHeader title="More projects" href="/projects" buttonLabel="All"/>
           <Projects limit={2} />
         </div>
       </section>

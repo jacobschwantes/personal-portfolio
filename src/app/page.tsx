@@ -28,9 +28,15 @@ export default async function Home() {
     <main className="gap-16 py-8 flex flex-col">
       <section className="dark:text-zinc-300 flex flex-col gap-3">
         <p className="dark:text-zinc-300 text-zinc-800">
-          Hi there, I&apos;m Jacob. I&apos;m an 22 y/o CS undergrad student. I like
-          shuffling cards and building things. I enjoy language design, web
-          development and I live on the terminal.
+          Hi, I&apos;m <strong>Jacob</strong>, a 22-year-old CS undergraduate
+          student at the{" "}
+          <span className=" border-b-2 border-zinc-200">
+            University of Minnesota
+          </span>
+          . I have a passion for <strong>Formula 1</strong> and enjoy building
+          things. My interests include{" "}
+          <span className="border-b-2 border-zinc-200">interaction design</span>
+          , web development, and cloud computing.
         </p>
       </section>
 
