@@ -27,8 +27,8 @@ const BlogPosts: NextComponentType<
   const posts = await getAllBlogPosts();
   return (
     <ul className="grid group/list">
-      {blogPosts.slice(0, limit ?? blogPosts.length).map((post) => (
-        <Link href="/blog/demo">
+      {blogPosts.slice(0, limit ?? blogPosts.length).map((post, i) => (
+        <Link key={i} href="/blog/demo">
           <li
             key={post.title}
             className="flex justify-between items-center gap-3 group-hover/list:opacity-75 group/item hover:bg-zinc-100/50 hover:!opacity-100 transition-all duration-200  p-2  rounded-md cursor-pointer -mx-2"

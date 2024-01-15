@@ -1,6 +1,6 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-type Project = {
+export type Project = {
   slug: string;
   meta: ProjectMeta;
   source: MDXRemoteSerializeResult<
@@ -9,7 +9,7 @@ type Project = {
   >;
 };
 
-type Blog = {
+export type Blog = {
   slug: string;
   meta: BlogMeta;
   source: MDXRemoteSerializeResult<
@@ -18,9 +18,9 @@ type Blog = {
   >;
 };
 
-type Meta = ProjectMeta | BlogMeta;
 
-type ProjectMeta = {
+
+export type ProjectMeta = {
   name: string;
   description: string;
   product: string;
@@ -32,10 +32,12 @@ type ProjectMeta = {
   repo?: string;
 };
 
-type BlogMeta = {
+export type BlogMeta = {
   title: string;
   description: string;
   date: string;
   tags: string[];
   img: string;
 };
+
+export type Meta = ProjectMeta | BlogMeta;

@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
+import type {
+  Project,
+  Blog,
+  Meta,
+} from "@/lib/types";
 
 const PROJECTS_FILE_PATH = "src/content/projects";
 const BLOGS_FILE_PATH = "src/content/blog";
