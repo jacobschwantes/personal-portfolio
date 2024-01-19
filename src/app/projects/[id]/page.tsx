@@ -6,10 +6,7 @@ import MDXContent from "@/components/mdx-components";
 import { ImageCarousel } from "@/components/ui/carousel";
 import Projects from "@/components/projects";
 import Link from "next/link";
-import {
-  GitHubLogoIcon,
-  LightningBoltIcon,
-} from "@radix-ui/react-icons";
+import { GitHubLogoIcon, LightningBoltIcon } from "@radix-ui/react-icons";
 import SectionHeader from "@/components/section-header";
 
 import type { Metadata } from "next";
@@ -18,14 +15,14 @@ type Props = {
   params: { id: string };
 };
 
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
-
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { meta } = await getProject(params.id);
 
   return {
     title: meta.name,
+    openGraph: {
+      images: [`/og?id=${meta.name}&description=${meta.description}`],
+    },
   };
 }
 
