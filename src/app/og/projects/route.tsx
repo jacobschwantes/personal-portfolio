@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const basePath =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : process.env.VERCEL_URL;
+      : `https://${process.env.VERCEL_URL}`;
 
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
@@ -35,7 +35,7 @@ export async function GET(request: Request) {
         </div>
 
         <div tw="w-[110%] flex h-full absolute -right-[50%] -top-[50%] ">
-          <img tw=" object-cover " src={`${basePath}/${id}.png`} />
+          <img tw=" object-cover " src={`${basePath}/${id?.toLowerCase()}.png`} />
         </div>
         <div
           style={{ filter: "blur(50px)" }}
