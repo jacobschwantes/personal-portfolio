@@ -3,6 +3,8 @@ import { ImageResponse } from "next/og";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { serialize } from "next-mdx-remote/serialize";
+import { Project, ProjectMeta } from "@/lib/types";
 
 export const runtime = "nodejs";
 
@@ -14,7 +16,15 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image({ params }: { params: { id: string } }) {
-  console.log(process.cwd());
+  const markdownFile = fs.promises.readFile(
+    path.join(
+      fileURLToPath(import.meta.url),
+      `../../../../content/projects/${params.id}.mdx`
+    )
+  );
+  const { frontmatter } = await serialize(await markdownFile, {
+    parseFrontmatter: true,
+  }) as { frontmatter: ProjectMeta };
   const interMedium = fs.promises.readFile(
     path.join(
       fileURLToPath(import.meta.url),
@@ -27,16 +37,15 @@ export default async function Image({ params }: { params: { id: string } }) {
       "../../../../assets/fonts/Inter-Regular.woff"
     )
   );
-  const { meta } = await getProject(params.id);
 
   return new ImageResponse(
     (
       <div tw="flex justify-between  w-full h-full items-center bg-zinc-50">
         <div tw="w-1/2 flex flex-col h-full gap-0 justify-center space-y-0 pl-12 ">
           <h2 tw="font-medium text-6xl text-zinc-900 flex flex-col">
-            <span>{meta.name}</span>
+            <span>{frontmatter.name}</span>
             <span tw="text-zinc-600 text-2xl font-normal leading-tighter  ">
-              {meta.description}
+              {frontmatter.description}
             </span>
           </h2>
         </div>
@@ -44,7 +53,7 @@ export default async function Image({ params }: { params: { id: string } }) {
         <div tw="w-[110%] flex h-full absolute -right-[50%] -top-[50%] ">
           <img
             tw=" object-cover "
-            src={`http://localhost:3000${meta.images[0]}`}
+            src={`http://localhost:3000${frontmatter.images[0]}`}
           />
         </div>
         <div
