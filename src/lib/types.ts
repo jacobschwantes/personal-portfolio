@@ -18,9 +18,8 @@ export type Blog = {
   >;
 };
 
-
-
 export type ProjectMeta = {
+  priority: number;
   name: string;
   description: string;
   product: string;
@@ -35,7 +34,7 @@ export type ProjectMeta = {
 export type BlogMeta = {
   title: string;
   description: string;
-  date: string;
+  date: number;
   tags: string[];
   img: string;
 };

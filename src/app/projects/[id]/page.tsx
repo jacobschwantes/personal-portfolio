@@ -7,11 +7,27 @@ import { ImageCarousel } from "@/components/ui/carousel";
 import Projects from "@/components/projects";
 import Link from "next/link";
 import {
-  EyeOpenIcon,
   GitHubLogoIcon,
   LightningBoltIcon,
 } from "@radix-ui/react-icons";
 import SectionHeader from "@/components/section-header";
+
+import type { Metadata } from "next";
+
+type Props = {
+  params: { id: string };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+
+  const { meta } = await getProject(params.id);
+
+  return {
+    title: meta.name,
+  };
+}
 
 interface PageProps {
   params: { id: string };
@@ -64,12 +80,16 @@ const Home: NextPage<PageProps> = async ({ params }) => {
             <p className="text-zinc-600 ">{meta.platform}</p>
             <p className=" font-medium text-zinc-900">Stack</p>
             <p className="text-zinc-600 ">{meta.stack}</p>
-            <p className=" font-medium text-zinc-900">Size</p>
-            <p className="text-zinc-600 ">200 KB</p>
+            <p className=" font-medium text-zinc-900">Tags</p>
+            <p className="text-zinc-600 ">{meta.tags}</p>
           </div>
         </div>
         <div className="w-full flex flex-col gap-6">
-          <SectionHeader title="More projects" href="/projects" buttonLabel="All"/>
+          <SectionHeader
+            title="More projects"
+            href="/projects"
+            buttonLabel="All"
+          />
           <Projects limit={2} />
         </div>
       </section>
