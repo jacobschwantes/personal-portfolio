@@ -14,6 +14,7 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image({ params }: { params: { id: string } }) {
+  console.log(process.cwd());
   const interMedium = fs.promises.readFile(
     path.join(
       fileURLToPath(import.meta.url),

@@ -37,6 +37,7 @@ export const getAllBlogPosts = async (): Promise<Blog[]> => {
 };
 
 export const getProject = async (slug: string): Promise<Project> => {
+  console.log(process.cwd());
   return (await parseMDXFile(`${slug}.mdx`, PROJECTS_FILE_PATH)) as Project;
 };
 
