@@ -2,8 +2,6 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-
-
 export async function GET(request: Request) {
   const basePath =
     process.env.NODE_ENV === "development"
@@ -25,22 +23,23 @@ export async function GET(request: Request) {
   return new ImageResponse(
     (
       <div tw="flex justify-between  w-full h-full items-center bg-zinc-50">
-        <div tw="w-1/2 flex flex-col h-full gap-0 justify-center space-y-0 pl-12 ">
-          <h2 tw="font-medium text-6xl text-zinc-900 flex flex-col">
-            <span>{id}</span>
-            <span tw="text-zinc-600 text-2xl font-normal leading-tighter  ">
-              {description}
-            </span>
-          </h2>
-        </div>
-
-        <div tw="w-[110%] flex h-full absolute -right-[50%] -top-[50%] ">
-          <img tw=" object-cover " src={`${basePath}/${id?.toLowerCase()}.png`} />
+        <div tw="w-full flex h-full absolute top-0 left-0">
+          <img
+            style={{ objectFit: "cover" }}
+            tw="w-full absolute inset-0"
+            src={`${basePath}/${id?.toLowerCase()}.png`}
+          />
         </div>
         <div
-          style={{ filter: "blur(50px)" }}
-          tw="w-full h-[50%] absolute -bottom-[35%] bg-zinc-50  left-0 right-0"
+          style={{ filter: "blur(40px)" }}
+          tw="w-full h-[50%] absolute -bottom-[20%] bg-zinc-50  left-0 right-0"
         />
+        <div tw="w-full flex flex-col h-full justify-end  px-16 pb-10">
+          <h2 tw="font-medium text-6xl text-zinc-800 flex flex-col">
+            <span>{id}</span>
+            <span tw="text-zinc-600 text-3xl font-normal  ">{description}</span>
+          </h2>
+        </div>
       </div>
     ),
     {
