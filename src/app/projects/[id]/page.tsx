@@ -30,10 +30,15 @@ interface PageProps {
   params: { id: string };
 }
 const Home: NextPage<PageProps> = async ({ params }) => {
-  const { meta, source, slug } = await getProject(params.id);
+  const { meta, source, slug, draft} = await getProject(params.id);
 
   return (
     <main className="flex flex-col py-8 gap-16 max-w-7xl mx-auto">
+      {draft && (
+        <div className="w-full">
+          <SectionHeader title="This is a draft" />
+        </div>
+      )}
       <section className=" flex flex-col md:flex-row space-y-5 md:space-y-0 justify-between items-start">
         <div className="space-y-2">
           <h1 className="md:text-3xl text-2xl  font-medium leading-tight text-zinc-900">

@@ -1,6 +1,7 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 export type Project = {
+  draft: boolean;
   slug: string;
   meta: ProjectMeta;
   source: MDXRemoteSerializeResult<
@@ -10,6 +11,7 @@ export type Project = {
 };
 
 export type Blog = {
+  draft: boolean;
   slug: string;
   meta: BlogMeta;
   source: MDXRemoteSerializeResult<

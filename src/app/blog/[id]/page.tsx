@@ -10,10 +10,15 @@ interface PageProps {
   params: { id: string };
 }
 const Home: NextPage<PageProps> = async ({ params }) => {
-  const { meta, source, slug } = await getBlogPost(params.id);
+  const { meta, source, slug, draft } = await getBlogPost(params.id);
 
   return (
     <main className="flex flex-col py-8 gap-16 max-w-7xl mx-auto">
+      {draft && (
+        <div className="w-full">
+          <SectionHeader title="This is a draft" />
+        </div>
+      )}
       <section className=" prose  mx-auto prose-headings:font-medium prose-headings:text-zinc-800 prose-sm max-w-5xl">
         <MDXContent source={source} />
       </section>

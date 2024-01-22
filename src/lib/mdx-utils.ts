@@ -7,23 +7,35 @@ const PROJECTS_FILE_PATH = "src/content/projects";
 const BLOGS_FILE_PATH = "src/content/blog";
 
 const getMDXFiles = async (directoryPath: string) => {
-  const filenames = fs.readdirSync(path.join(directoryPath));
-  const mdxFiles = await Promise.all(
-    filenames.map((filename) => parseMDXFile(filename, directoryPath))
-  );
-  return mdxFiles;
+  try {
+    const filenames = fs.readdirSync(path.join(directoryPath));
+    const mdxFiles = await Promise.all(
+      filenames.map((filename) => parseMDXFile(filename, directoryPath))
+    );
+    return mdxFiles;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const parseMDXFile = async (filename: string, directory: string) => {
-  const markdownFile = fs.readFileSync(path.join(directory, filename), "utf-8");
-  const source = await serialize(markdownFile, {
-    parseFrontmatter: true,
-  });
-  return {
-    meta: source.frontmatter as Meta,
-    slug: filename.replace(/\.mdx$/, ""),
-    source,
-  };
+  try {
+    const markdownFile = fs.readFileSync(
+      path.join(directory, filename),
+      "utf-8"
+    );
+    const source = await serialize(markdownFile, {
+      parseFrontmatter: true,
+    });
+    return {
+      draft: source.frontmatter.draft || false,
+      meta: source.frontmatter as Meta,
+      slug: filename.replace(/\.mdx$/, ""),
+      source,
+    };
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const getAllProjects = async (): Promise<Project[]> => {
@@ -33,11 +45,12 @@ export const getAllProjects = async (): Promise<Project[]> => {
 
 export const getAllBlogPosts = async (): Promise<Blog[]> => {
   const files = (await getMDXFiles(BLOGS_FILE_PATH)) as Blog[];
-  return files.sort((a, b) => b.meta.date - a.meta.date);
+  return files
+    .filter((post) => process.env.NODE_ENV === 'development' || !post.draft)
+    .sort((a, b) => b.meta.date - a.meta.date);
 };
 
 export const getProject = async (slug: string): Promise<Project> => {
-  console.log(process.cwd());
   return (await parseMDXFile(`${slug}.mdx`, PROJECTS_FILE_PATH)) as Project;
 };
 
