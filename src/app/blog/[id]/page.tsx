@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { Metadata, NextPage } from "next";
 import path from "path";
 import fs from "fs";
 import { getBlogPost } from "@/lib/mdx-utils";
@@ -8,6 +8,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 interface PageProps {
   params: { id: string };
+}
+type Props = {
+  params: { id: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { meta } = await getBlogPost(params.id);
+
+  return {
+    title: meta.title,
+    openGraph: {
+      images: [`/og/blog?title=${meta.title}`],
+    },
+  };
 }
 const Home: NextPage<PageProps> = async ({ params }) => {
   const { meta, source, slug, draft } = await getBlogPost(params.id);

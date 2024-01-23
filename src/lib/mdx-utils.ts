@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
-import type { Project, Blog, Meta } from "@/lib/types";
+import { Meta, Project, Blog } from "./types";
 
 const PROJECTS_FILE_PATH = "src/content/projects";
 const BLOGS_FILE_PATH = "src/content/blog";
@@ -27,6 +27,7 @@ const parseMDXFile = async (filename: string, directory: string) => {
     const source = await serialize(markdownFile, {
       parseFrontmatter: true,
     });
+
     return {
       draft: source.frontmatter.draft || false,
       meta: source.frontmatter as Meta,
@@ -34,7 +35,7 @@ const parseMDXFile = async (filename: string, directory: string) => {
       source,
     };
   } catch (e) {
-    console.log(e);
+    throw new Error(`Failed to parse MDX File: ${filename}: ${e}`);
   }
 };
 
@@ -46,7 +47,7 @@ export const getAllProjects = async (): Promise<Project[]> => {
 export const getAllBlogPosts = async (): Promise<Blog[]> => {
   const files = (await getMDXFiles(BLOGS_FILE_PATH)) as Blog[];
   return files
-    .filter((post) => process.env.NODE_ENV === 'development' || !post.draft)
+    .filter((post) => process.env.NODE_ENV === "development" || !post.draft)
     .sort((a, b) => b.meta.date - a.meta.date);
 };
 
