@@ -7,12 +7,33 @@ import { getAllProjects } from "@/lib/mdx-utils";
 interface ProjectsProps {
   wide?: boolean;
   limit?: number;
+  random?: boolean;
+  currentProject?: string;
 }
 const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = async ({
   wide,
   limit,
+  random,
+  currentProject,
 }) => {
-  const projects = await getAllProjects();
+  const projects = await getAllProjects()
+    .then((projects) => {
+      if (random) {
+        return projects.sort(() => Math.random() - 0.5);
+      }
+      return projects;
+    })
+    .then((projects) => {
+      if (currentProject) {
+        return projects.filter((project) => project.slug !== currentProject);
+      }
+      return projects;
+    })
+    .catch((err) => {
+      console.error(err);
+      return [];
+    });
+
   return (
     <div
       className={clsx(

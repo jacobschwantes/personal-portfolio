@@ -6,6 +6,7 @@ import MDXContent from "@/components/mdx-components";
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import CustomLink from "@/components/ui/link";
 interface PageProps {
   params: { id: string };
 }
@@ -36,10 +37,12 @@ const Home: NextPage<PageProps> = async ({ params }) => {
       <section className=" prose  mx-auto prose-headings:font-medium prose-headings:text-zinc-800 prose-sm max-w-5xl">
         <MDXContent source={source} />
       </section>
+
       <section className="flex flex-col gap-2">
         <SectionHeader title="Newsletter" />
         <NewsletterSubscribeForm />
       </section>
+      <CustomLink href="/blog" label="Back" reverse />
     </main>
   );
 };

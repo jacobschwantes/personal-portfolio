@@ -30,7 +30,7 @@ interface PageProps {
   params: { id: string };
 }
 const Home: NextPage<PageProps> = async ({ params }) => {
-  const { meta, source, slug, draft} = await getProject(params.id);
+  const { meta, source, slug, draft } = await getProject(params.id);
 
   return (
     <main className="flex flex-col py-8 gap-16 max-w-7xl mx-auto">
@@ -82,8 +82,8 @@ const Home: NextPage<PageProps> = async ({ params }) => {
             <p className="text-zinc-600 ">{meta.platform}</p>
             <p className=" font-medium text-zinc-900">Stack</p>
             <p className="text-zinc-600 ">{meta.stack}</p>
-            <p className=" font-medium text-zinc-900">Tags</p>
-            <p className="text-zinc-600 ">{meta.tags}</p>
+            {/* <p className=" font-medium text-zinc-900">Tags</p>
+            <p className="text-zinc-600 ">{meta.tags}</p> */}
           </div>
         </div>
         <div className="w-full flex flex-col gap-6">
@@ -92,7 +92,7 @@ const Home: NextPage<PageProps> = async ({ params }) => {
             href="/projects"
             buttonLabel="All"
           />
-          <Projects limit={2} />
+          <Projects currentProject={slug} random limit={2} />
         </div>
       </section>
     </main>
