@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          "max-w-3xl mx-auto dark:bg-zinc-900",
+          "max-w-3xl mx-auto dark:bg-zinc-900 px-4 md:px-0",
           inter.className
         )}
       >
