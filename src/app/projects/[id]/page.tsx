@@ -36,7 +36,7 @@ const Home: NextPage<PageProps> = async ({ params }) => {
   );
 
   return (
-    <main className="flex flex-col py-8 gap-16 max-w-7xl mx-auto">
+    <main className="flex flex-col py-8 gap-16 max-w-7xl mx-auto w-full overflow-x-hidden">
       {meta.draft && (
         <div className="w-full">
           <SectionHeader title="This is a draft" />
