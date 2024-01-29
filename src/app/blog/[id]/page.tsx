@@ -1,7 +1,5 @@
 import type { Metadata, NextPage } from "next";
-import path from "path";
-import fs from "fs";
-import { getBlogPost } from "@/lib/mdx-utils";
+import { getAllBlogPosts, getBlogPost } from "@/lib/mdx-utils";
 import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,7 +49,9 @@ export default Home;
 const NewsletterSubscribeForm = () => {
   return (
     <form className="flex flex-col gap-5">
-      <p className="text-zinc-600 dark:text-zinc-300 ">Get notified when I publish new things.</p>
+      <p className="text-zinc-600 dark:text-zinc-300 ">
+        Get notified when I publish new things.
+      </p>
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input type="email" placeholder="Email" />
         <Button type="submit">Subscribe</Button>
@@ -61,8 +61,8 @@ const NewsletterSubscribeForm = () => {
 };
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join("src/content/blog"));
-  return files.map((filename) => ({
-    id: filename.replace(".mdx", ""),
+  const posts = await getAllBlogPosts();
+  return posts.map(({ slug }) => ({
+    id: slug,
   }));
 }
