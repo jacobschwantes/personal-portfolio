@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Jacob Schwantes",
   description:
-    "Transforming complex problems into simple, elegant, and engaging digital experiences",
+    "Explore my personal repository of tech exploration, where I document my side projects and share insights into programming and design.",
 };
 
 const UnderlineLink = ({
