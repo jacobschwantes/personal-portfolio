@@ -12,7 +12,7 @@ const CustomLink: NextComponentType<NextPageContext, {}, CustomLinkProps> = ({
   reverse,
 }) => (
   <Link
-    className="whitespace-pre  dark:text-zinc-300 group flex items-center dark:hover:text-zinc-200 transition-all duration-300 text-zinc-700 hover:text-zinc-950 py-0.5"
+    className="whitespace-pre  dark:text-zinc-300 group flex items-center md:dark:hover:text-zinc-200 transition-all duration-300 text-zinc-700 md:hover:text-zinc-950 py-0.5"
     href={href}
   >
     <span className={reverse ? "order-2" : ""}>{label}</span>
@@ -21,10 +21,10 @@ const CustomLink: NextComponentType<NextPageContext, {}, CustomLinkProps> = ({
       viewBox="0 0 24 24"
       fill="currentColor"
       className={cn(
-        "w-5 h-5   mt-0.5 transition-all duration-300",
+        "w-5 h-5 mt-0.5 transition-all duration-300",
         reverse
-          ? "rotate-180 order-1 mr-0.5 group-hover:-translate-x-0.5 "
-          : "ml-0.5 group-hover:translate-x-0.5"
+          ? "rotate-180 order-1 mr-0.5 md:group-hover:-translate-x-0.5 "
+          : "ml-0.5 md:group-hover:translate-x-0.5"
       )}
     >
       <path

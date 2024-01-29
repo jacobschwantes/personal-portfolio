@@ -26,7 +26,7 @@ const Socials: NextComponentType<NextPageContext, {}, SocialsProps> = ({}) => (
         className="group"
         href={platform.href}
       >
-        <platform.icon className="w-4 h-4  text-zinc-400 dark:hover:text-zinc-300 transition-colors duration-300 hover:text-zinc-900" />
+        <platform.icon className="w-5 h-5  text-zinc-400 md:dark:hover:text-zinc-300 transition-colors duration-300 hover:text-zinc-900" />
       </Link>
     ))}
   </div>

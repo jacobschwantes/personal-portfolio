@@ -44,12 +44,12 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = async ({
       {projects.slice(0, limit ?? projects.length).map((project, i) => (
         <Link key={project.slug} replace href={`/projects/${project.slug}`}>
           <div className=" bg-zinc-50 dark:bg-zinc-900 rounded-2xl group flex flex-col overflow-hidden w-full aspect-[4/3] relative border border-zinc-100 dark:border-zinc-800">
-            <div className=" relative flex-1 group-hover:scale-[1.03] ease-out transition-all duration-500 mb-12 ">
+            <div className=" relative flex-1 md:group-hover:scale-[1.03] ease-out transition-all duration-500 mb-12 ">
               <Image
                 priority
                 fill
                 alt={`preview image of ${project.meta.name} project`}
-                className="object-cover h-full w-full  group-hover:saturate-125 group-hover:brightness-100 brightness-[99%] transitional duration-300 ease-out"
+                className="object-cover h-full w-full  md:group-hover:saturate-125 md:group-hover:brightness-100 md:brightness-[99%] transitional duration-300 ease-out"
                 src={`/images/projects/${project.slug}/preview.png`}
               />
             </div>

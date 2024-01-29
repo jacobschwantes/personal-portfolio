@@ -65,7 +65,7 @@ const Header: NextComponentType<NextPageContext, {}, ComponentProps> = ({}) => {
         </ul>
       </nav>
       <nav className="md:hidden">
-        <DropdownMenuRadioGroupDemo active={pathname} />
+        <DropdownMenuNavigation active={pathname} />
       </nav>
     </header>
   );
@@ -73,13 +73,14 @@ const Header: NextComponentType<NextPageContext, {}, ComponentProps> = ({}) => {
 
 export default Header;
 
-export function DropdownMenuRadioGroupDemo({ active }: { active: string }) {
+export function DropdownMenuNavigation({ active }: { active: string }) {
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
-          <HamburgerMenuIcon className="" />
+          <HamburgerMenuIcon aria-label="Navigation Menu" className="" />
+          <span className="sr-only">Navigation Menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 mr-4">
