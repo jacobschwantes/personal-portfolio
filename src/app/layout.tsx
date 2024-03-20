@@ -5,8 +5,15 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import clsx from "clsx";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  openGraph: {
+    siteName: "Jacob Schwantes",
+  }
+}
 
 export default function RootLayout({
   children,
