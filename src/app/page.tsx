@@ -4,9 +4,9 @@ import Projects from "@/components/projects";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Jacob Schwantes",
-  description:
-    "Explore my personal repository of tech exploration, where I document my side projects and share insights into programming and design.",
+  applicationName: "Jacob Schwantes",
+  title: "Home",
+  description: "Showcasing my notable work and writings on technology.",
 };
 
 const UnderlineLink = ({

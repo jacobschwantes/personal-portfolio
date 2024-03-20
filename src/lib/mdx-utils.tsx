@@ -65,7 +65,11 @@ const parseMDXFile = async (filename: string, directory: string) => {
 
 export const getAllProjects = async (): Promise<Project[]> => {
   const files = (await getMDXFiles(PROJECTS_FILE_PATH)) as Project[];
-  return files.sort((a, b) => a.meta.priority - b.meta.priority);
+  return files
+    .filter(
+      (project) => process.env.NODE_ENV == "development" || !project.meta.draft
+    )
+    .sort((a, b) => a.meta.priority - b.meta.priority);
 };
 
 export const getAllBlogPosts = async (): Promise<Blog[]> => {

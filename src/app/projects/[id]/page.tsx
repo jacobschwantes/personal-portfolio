@@ -1,13 +1,10 @@
 import type { NextPage } from "next";
-import path from "path";
-import fs from "fs";
-import { getProject } from "@/lib/mdx-utils";
+import { getAllProjects, getProject } from "@/lib/mdx-utils";
 import { ImageCarousel } from "@/components/ui/carousel";
 import Projects from "@/components/projects";
 import Link from "next/link";
 import { GitHubLogoIcon, LightningBoltIcon } from "@radix-ui/react-icons";
 import SectionHeader from "@/components/section-header";
-
 import type { Metadata } from "next";
 
 type Props = {
@@ -110,8 +107,8 @@ const Home: NextPage<PageProps> = async ({ params }) => {
 export default Home;
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join("src/content/projects"));
-  return files.map((filename) => ({
-    id: filename.replace(".mdx", ""),
+  const files = await getAllProjects();
+  return files.map((project) => ({
+    id: project.slug
   }));
 }
