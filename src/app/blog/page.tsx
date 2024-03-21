@@ -5,8 +5,9 @@ interface PageProps {}
 
 export const metadata: Metadata = {
   applicationName: "Jacob Schwantes",
-  title: "Blog",
-  description: "Exploring my projects, workflow, and perspectives on technology.",
+  title: "Jacob Schwantes | Blog",
+  description:
+    "Exploring my projects, workflow, and perspectives on technology.",
 };
 
 const Page: NextPage<PageProps> = ({}) => {

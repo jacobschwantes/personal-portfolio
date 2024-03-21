@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   applicationName: "Jacob Schwantes",
-  title: "Projects",
+  title: "Jacob Schwantes | Projects",
   description:
     "Showcase of my notable work, exploring challenges and solutions.",
 };  

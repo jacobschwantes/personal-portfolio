@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata = {
   applicationName: "Jacob Schwantes",
-  title: "Home",
+  title: "Jacob Schwantes | Home",
   description: "Showcasing my notable work and writings on technology.",
 };
 
