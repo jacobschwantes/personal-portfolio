@@ -27,10 +27,10 @@ const routes = [
     name: "Projects",
     path: "/projects",
   },
-  {
-    name: "Blog",
-    path: "/blog",
-  },
+  // {
+  //   name: "Blog",
+  //   path: "/blog",
+  // },
 ];
 
 const Header: NextComponentType<NextPageContext, {}, ComponentProps> = ({}) => {

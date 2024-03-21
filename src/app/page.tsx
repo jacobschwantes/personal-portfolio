@@ -33,7 +33,7 @@ export default async function Home() {
           . Much like my fascination with <strong>Formula 1</strong>, I enjoy
           delving into the intricacies of technology, particularly in building
           complex software systems. My interests primarily lie in interaction
-          design, web development, and cloud computing.
+          design, web development, and distributed systems.
         </p>
       </section>
 
