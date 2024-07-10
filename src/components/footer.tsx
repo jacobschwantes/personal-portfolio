@@ -1,18 +1,15 @@
-import { NextComponentType, NextPageContext } from "next";
 import Socials from "@/components/social-links";
 
-interface FooterProps {}
-
-const Footer: NextComponentType<NextPageContext, {}, FooterProps> = ({}) => (
-  <footer className="flex justify-between items-center gap-x-3 py-8  dark:text-zinc-300 text-zinc-600 text-sm">
-    <div className="">
-      &copy; <time>2024</time>
-      <span> JSCH</span>
-    </div>
-    <Socials />
-  </footer>
-);
+function Footer() {
+	return (
+		<footer className="flex justify-between items-center gap-x-3 py-8  dark:text-zinc-300 text-zinc-600 text-sm">
+			<div className="">
+				&copy; <time>2024</time>
+				<span> webdevjake</span>
+			</div>
+			<Socials />
+		</footer>
+	);
+}
 
 export default Footer;
-
-
