@@ -24,9 +24,11 @@ const loadMDXFiles = async (directoryPath: string) => {
 
 const parseMDXFile = async (filename: string, directory: string) => {
 	const mdxComponents = {
-		pre: (props: React.HTMLProps<HTMLPreElement>) => {
+    pre: (props: React.HTMLProps<HTMLPreElement>) => {
+      // @ts-expect-error
 			const code = props.raw;
-			// console.log(props)
+      // console.log(props)
+      // @ts-expect-error
 			const meta = JSON.parse(props.meta || "{}");
 			// console.log(meta);
 			// console.log(code);
