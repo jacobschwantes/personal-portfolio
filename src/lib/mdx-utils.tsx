@@ -22,21 +22,16 @@ const loadMDXFiles = async (directoryPath: string) => {
 	}
 };
 
+
 const parseMDXFile = async (filename: string, directory: string) => {
 	const mdxComponents = {
-    pre: (props: React.HTMLProps<HTMLPreElement>) => {
-      // @ts-expect-error
+		pre: (props: React.HTMLProps<HTMLPreElement>) => {
+			// @ts-expect-error
 			const code = props.raw;
-      // console.log(props)
-      // @ts-expect-error
-			const meta = JSON.parse(props.meta || "{}");
-			// console.log(meta);
-			// console.log(code);
 
 			return (
 				<div className="relative flex flex-col">
 					<div className="flex absolute top-0 right-0 justify-between items-start p-3">
-						{/* {meta.filename && <span>{meta.filename}</span>} */}
 						<CopyCodeButton code={code} />
 					</div>
 					<pre className="not-prose pt-0" {...props} />
@@ -95,22 +90,14 @@ const parseMDXFile = async (filename: string, directory: string) => {
 						],
 						() => (tree) => {
 							visit(tree, (node) => {
-								// if (node?.type === "element" && node?.tagName === "div") {
-								// if (
-								// 	!("data-rehype-pretty-code-fragment" in node.properties)
-								// ) {
-								// 	return;
-								// }
 								if (!node.children) return;
 
 								for (const child of node.children) {
 									if (child.tagName === "pre") {
-										// console.log(node.raw)
 										child.properties["raw"] = node.raw;
 										child.properties["meta"] = node.meta;
 									}
 								}
-								// }
 							});
 						},
 					],
