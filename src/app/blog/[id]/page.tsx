@@ -38,7 +38,6 @@ async function Home({ params }: Readonly<PageProps>) {
 				<SectionHeader title="Newsletter" />
 				<NewsletterSubscribeForm />
 			</section>
-			<CustomLink href="/blog" label="back" reverse />
 		</main>
 	);
 }

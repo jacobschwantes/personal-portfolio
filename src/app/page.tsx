@@ -40,7 +40,7 @@ export default async function Home() {
 				<SectionHeader
 					title="Projects"
 					buttonLabel="View more"
-					href="/projects"
+					href="/work"
 				/>
 				<Projects />
 			</section>

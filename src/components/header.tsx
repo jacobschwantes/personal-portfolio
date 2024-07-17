@@ -12,7 +12,6 @@ import {
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import CustomLink from "./ui/link";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 const routes = [
@@ -21,8 +20,8 @@ const routes = [
 		path: "/",
 	},
 	{
-		name: "Projects",
-		path: "/projects",
+		name: "Work",
+		path: "/work",
 	},
 	{
 		name: "Blog",
@@ -31,18 +30,13 @@ const routes = [
 ];
 
 function Header() {
-  const pathname = usePathname();
-  const returnPath = pathname.split("/").slice(0, -1).join("/") || "/";
+	const pathname = usePathname();
+
 	return (
 		<header className=" py-8 flex justify-between items-center ">
-			{pathname === "/" ? (
-				<h1 className="dark:text-zinc-200 text-zinc-800 text-lg font-medium ">
-					webdevjake
-				</h1>
-			) : (
-				<CustomLink href={returnPath} label="back" reverse />
-			)}
-
+			<Link href="/" className="dark:text-zinc-200 text-zinc-800 text-lg font-medium ">
+				webdevjake
+			</Link>
 			<nav className="md:flex hidden">
 				<ul className="flex gap-4 items-center">
 					{routes.map((item) => (
