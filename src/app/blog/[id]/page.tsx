@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { getPostById, getPosts } from "@/lib/mdx-utils";
 import SectionHeader from "@/components/section-header";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import CustomLink from "@/components/ui/link";
+import { NewsletterSubscribeForm } from "@/components/newsletter-form";
 interface PageProps {
 	params: { id: string };
 }
@@ -31,7 +30,7 @@ async function Home({ params }: Readonly<PageProps>) {
 					<SectionHeader title="This is a draft" />
 				</div>
 			)}
-			<section className=" prose mx-auto dark:prose-invert prose-headings:font-medium dark:prose-headings:text-zinc-200 prose-headings:text-zinc-800 prose-sm max-w-5xl">
+			<section className="prose mx-auto dark:prose-invert prose-headings:font-medium dark:prose-headings:text-zinc-200 prose-headings:text-zinc-800 prose-sm max-w-5xl">
 				{content}
 			</section>
 
@@ -39,25 +38,12 @@ async function Home({ params }: Readonly<PageProps>) {
 				<SectionHeader title="Newsletter" />
 				<NewsletterSubscribeForm />
 			</section>
-			<CustomLink href="/blog" label="Back" reverse />
+			<CustomLink href="/blog" label="back" reverse />
 		</main>
 	);
 }
 export default Home;
 
-function NewsletterSubscribeForm() {
-	return (
-		<form className="flex flex-col gap-5">
-			<p className="text-zinc-600 dark:text-zinc-300 ">
-				Get notified when I publish new things.
-			</p>
-			<div className="flex w-full max-w-sm items-center space-x-2">
-				<Input type="email" placeholder="Email" />
-				<Button type="submit">Subscribe</Button>
-			</div>
-		</form>
-	);
-}
 
 export async function generateStaticParams() {
 	const posts = await getPosts();
