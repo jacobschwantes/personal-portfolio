@@ -20,8 +20,8 @@ const routes = [
 		path: "/",
 	},
 	{
-		name: "Work",
-		path: "/work",
+		name: "Projects",
+		path: "/projects",
 	},
 	{
 		name: "Blog",
@@ -35,15 +35,15 @@ function Header() {
 	return (
 		<header className=" py-8 flex justify-between items-center ">
 			<Link href="/" className="dark:text-zinc-200 text-zinc-800 text-lg font-medium ">
-				webdevjake
+				Jacob Schwantes
 			</Link>
 			<nav className="md:flex hidden">
-				<ul className="flex gap-4 items-center">
+				<ul className="flex gap-5 items-center">
 					{routes.map((item) => (
 						<li className="flex items-center group" key={item.name}>
 							<Link
 								className={clsx(
-									"dark:hover:text-zinc-200 transition-colors duration-300 lowercase",
+									"dark:hover:text-zinc-200 transition-colors duration-300",
 									(pathname === "/" && item.path === "/") ||
 										(pathname.includes(item.path) && item.path != "/")
 										? "dark:text-zinc-100 text-zinc-900"

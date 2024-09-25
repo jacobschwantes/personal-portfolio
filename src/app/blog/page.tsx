@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 
 function Page() {
 	return (
-		<main className="">
-			<section className="gap-3 flex flex-col">
+		<div className="">
+			<main className="gap-3 flex flex-col">
 				<SectionHeader title="Blog" />
 				<Posts />
-			</section>
-		</main>
+			</main>
+		</div>
 	);
 }
 export default Page;
