@@ -30,9 +30,14 @@ export default async function Home() {
 					<UnderlineLink href="https://twin-cities.umn.edu/">
 						University of Minnesota
 					</UnderlineLink>
-					. Much like my fascination with <strong>Formula 1</strong>, I enjoy
-					delving into the intricacies of technology, particularly building
-					simple solutions to interesting problems.
+					. When I&apos;m not watching Formula 1 🏎️, lifting weights 🏋🏻, or
+					cooking 👨🏻‍🍳, I&apos;m probably building something cool with software
+					😎.
+				</p>
+				<p className="dark:text-zinc-300 text-zinc-800">
+					I&apos;m obsessively detail-oriented and passionate about crafting
+					engaging product experiences. My main areas of interest include design
+					engineering, web development, and distributed systems.
 				</p>
 			</section>
 
@@ -42,7 +47,7 @@ export default async function Home() {
 					buttonLabel="View more"
 					href="/projects"
 				/>
-				<Projects />
+				<Projects limit={2} />
 			</section>
 
 			<section className="gap-1 flex flex-col">
