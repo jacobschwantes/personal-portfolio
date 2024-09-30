@@ -9,6 +9,7 @@ const PROJECTS_FILE_PATH = "src/content/projects";
 const BLOGS_FILE_PATH = "src/content/blog";
 
 import { visit } from "unist-util-visit";
+import Image from "next/image";
 
 const loadMDXFiles = async (directoryPath: string) => {
 	try {
@@ -22,7 +23,6 @@ const loadMDXFiles = async (directoryPath: string) => {
 	}
 };
 
-
 const parseMDXFile = async (filename: string, directory: string) => {
 	const mdxComponents = {
 		pre: (props: React.HTMLProps<HTMLPreElement>) => {
@@ -35,6 +35,22 @@ const parseMDXFile = async (filename: string, directory: string) => {
 						<CopyCodeButton code={code} />
 					</div>
 					<pre className="not-prose pt-0" {...props} />
+				</div>
+			);
+		},
+		Image: (props: React.ComponentProps<"img"> & { caption?: string }) => {
+			return (
+				<div className="flex flex-col">
+					<img
+						className="relative mb-0 bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800  w-full aspect-video rounded-2xl object-cover overflow-hidden"
+						src={props.src}
+						{...props}
+					/>
+					{props.caption && (
+						<p className="text-zinc-500 dark:text-zinc-400 text-sm text-center">
+							{props.caption}
+						</p>
+					)}
 				</div>
 			);
 		},
