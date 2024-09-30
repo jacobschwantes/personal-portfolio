@@ -23,7 +23,7 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = async ({
 		.then((projects) =>
 			currentProject
 				? projects.filter((project) => project.slug !== currentProject)
-				: projects
+				: projects.filter((project) => project.meta.draft !== true)
 		)
 		.catch((err) => {
 			console.error(err);
