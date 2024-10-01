@@ -52,7 +52,7 @@ async function Home({ params }: Readonly<PageProps>) {
 							href={meta.demo}
 						>
 							<LightningBoltIcon className="w-4 h-4 dark:group-hover:text-zinc-200 group-hover:text-zinc-950" />
-							Demo
+							Website
 						</Link>
 					)}
 					{meta.repo && (

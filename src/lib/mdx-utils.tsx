@@ -4,12 +4,14 @@ import { Meta, Project, Post } from "./types";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import { CopyCodeButton } from "@/components/copy-code-button";
+import { useState } from "react";
 
 const PROJECTS_FILE_PATH = "src/content/projects";
 const BLOGS_FILE_PATH = "src/content/blog";
 
 import { visit } from "unist-util-visit";
 import Image from "next/image";
+import FullScreenImage from "@/components/mdx/image";
 
 const loadMDXFiles = async (directoryPath: string) => {
 	try {
@@ -38,22 +40,7 @@ const parseMDXFile = async (filename: string, directory: string) => {
 				</div>
 			);
 		},
-		Image: (props: React.ComponentProps<"img"> & { caption?: string }) => {
-			return (
-				<div className="flex flex-col">
-					<img
-						className="relative mb-0 bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800  w-full aspect-video rounded-2xl object-cover overflow-hidden"
-						src={props.src}
-						{...props}
-					/>
-					{props.caption && (
-						<p className="text-zinc-500 dark:text-zinc-400 text-sm text-center">
-							{props.caption}
-						</p>
-					)}
-				</div>
-			);
-		},
+		Image: FullScreenImage,
 	};
 
 	try {
@@ -98,10 +85,11 @@ const parseMDXFile = async (filename: string, directory: string) => {
 							// @ts-expect-error
 							rehypePrettyCode,
 							{
-								theme: {
-									dark: "material-theme-darker",
-									light: "github-light",
-								},
+								// theme: {
+								// 	dark: "material-theme-darker",
+								// 	light: "github-light",
+								// },
+								theme: "github-light",
 							},
 						],
 						() => (tree) => {

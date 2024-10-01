@@ -25,19 +25,19 @@ export default async function Home() {
 		<main className="gap-16 py-8 flex flex-col">
 			<section className="dark:text-zinc-300 flex flex-col gap-3">
 				<p className="dark:text-zinc-300 text-zinc-800">
-					Hi, I&apos;m <strong>Jake</strong>, currently studying{" "}
-					<strong>Computer Science</strong> at the{" "}
+					Hi, I&apos;m <strong>Jake</strong>, a{" "}
+					<strong>Computer Science</strong> student at the{" "}
 					<UnderlineLink href="https://twin-cities.umn.edu/">
 						University of Minnesota
 					</UnderlineLink>
-					. When I&apos;m not watching Formula 1 🏎️, lifting weights 🏋🏻, or
-					cooking 👨🏻‍🍳, I&apos;m probably building something cool with software
-					😎.
+					. When I&apos;m not glued to Formula 1 🏎️, pumping iron 🏋🏻, or
+					whipping up culinary creations 👨🏻‍🍳, I&apos;m building cool stuff with
+					code. For me, it&apos;s not just a study—it&apos;s a lifestyle. 😎
 				</p>
 				<p className="dark:text-zinc-300 text-zinc-800">
-					I&apos;m obsessively detail-oriented and passionate about crafting
-					engaging product experiences. My main areas of interest include design
-					engineering, web development, and distributed systems.
+					I love diving deep into my tech interests: design engineering, web
+					development, and distributed systems. I&apos;d love to work with you or
+					just chat, so feel free to reach out!
 				</p>
 			</section>
 
