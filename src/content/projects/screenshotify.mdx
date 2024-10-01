@@ -1,23 +1,73 @@
 ---
-draft: true
+draft: false
 priority: 2
 name: "Screenshotify"
 description: "Screenshot API"
 product: "Screenshot API"
 stack: "React, Next.js, Puppeteer, Express, Firebase, Google Cloud Platform"
-platform: "Web"
-images: ["preview.png", "token-settings.jpg", "dashboard.jpg", "history.jpg", "tokens.jpg"]
-demo: "https://www.screenshotify.app/"
+platform: "Web + API"
+images:
+  [
+    "preview.png",
+    "token-settings.jpg",
+    "dashboard.jpg",
+    "history.jpg",
+    "tokens.jpg",
+  ]
+# demo: "https://www.screenshotify.app/"
 ---
-## Screenshotify: Capturing the Web
-Screenshotify is a tool that simplifies the process of capturing high-resolution screenshots of web pages. 
-Born out of a need to quickly render responsive websites as images, it leverages a virtual browser environment to efficiently render pages and capture screenshots.
-## Behind the Scenes
-Built with a focus on user experience, Screenshotify offers a comprehensive dashboard for managing usage stats, history logs, and access keys. 
-The tool incorporates features like persistent cloud storage, SSL termination, high availability through horizontally scaled serverless functions, and fine-grained access key control. 
-## Performance improvements
-Optimizing Screenshotify presented unique challenges, particularly in enhancing performance. 
-One key improvement was the integration of an ad blocker, which considerably increased page load speeds. 
-Another crucial aspect involved refining the process for API key quota look-ups which
-helped reduce database reads and minimized network round trips, improving the overall efficiency and responsiveness of the service. 
-These improvements were the easiest to implement but further optimization can be done to improve the performance of page loads as that is the biggest source of latency in the application.
+
+<Image
+	src="/images/projects/screenshotify/dashboard.png"
+	alt="Screenshotify Dashboard"
+	caption="The dashboard: Who doesn't love graphs? 😍"
+/>
+
+## Capturing the web, one page at a time
+
+Ever needed to capture hundreds of high-res screenshots of responsive websites? Probably not, but some people do, ok! (Looking at you, bleary-eyed QA testers chugging your fifth espresso.) Screenshotify was born to scratch that itch. It's not just a tool; it's a peek into the world of API design and cloud architecture.
+
+## Why I built it
+- Manual screenshots? Ain't nobody got time for that.
+- Existing tools? Either clunky or pricey.
+- My coffee machine suggested I need a more complex project.
+- I had a browser tab open to "How to build scalable web services" anyway.
+
+<Image
+	src="/images/projects/screenshotify/history.png"
+	alt="Screenshotify History"
+	caption="Request history: Where every screenshot request gets its 15 minutes of fame"
+/>
+
+## What makes Screenshotify tick
+
+1. **Virtual browser magic**: Puppeteer rendering web pages faster than you can say "cheese!"
+2. **User-friendly dashboard**: Because who doesn't love pretty graphs and logs?
+3. **Cloud-powered**: Serverless functions and persistent storage, oh my!
+
+<Image
+	src="/images/projects/screenshotify/token-settings.png"
+	alt="Screenshotify Tokens"
+	caption="Token settings: set limits, track usage, and play 'revoke the token' if you're feeling reckless"
+/>
+
+## Under the hood: A learning playground
+
+- **Ad-blocking boost**: Because ads are the nemesis of load times.
+- **API key optimization**: Fewer database reads, happier servers, happier wallets.
+- **Cold start combat**: Keeping instances warm like fresh coffee.
+
+<Image
+	src="/images/projects/screenshotify/tokens.png"
+	alt="Screenshotify Tokens"
+	caption="The tokens page: where API keys play hide and seek 👻"
+/>
+
+## What I learned (besides how to spell 'screenshot')
+
+1. Dashboards are like gardens – they need constant tending.
+2. Google Cloud Platform: It's not just for Googlers anymore.
+3. Serverless isn't just a buzzword; it's a lifestyle choice.
+
+Screenshotify wasn't just about capturing web pages; it was about capturing the essence of building a scalable web service. While it may be archived now, the lessons learned continue to render clearly in my developer journey.
+Remember, folks: Always optimize your cold starts, and never underestimate the power of a good ad blocker!

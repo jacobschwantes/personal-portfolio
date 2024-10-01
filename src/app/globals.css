@@ -24,8 +24,8 @@ pre {
   border-radius: 1rem;
   border: 1px solid #f4f4f5;
 }
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   pre {
     border: 1px solid #27272a;
   }
-}
+} */
