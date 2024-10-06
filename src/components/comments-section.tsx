@@ -6,10 +6,10 @@ export function CommentsSection() {
 	const pathname = usePathname();
 	useEffect(() => {
 		console.log(pathname);
-		if (!pathname.includes("blog") && pathname != "/blog") {
-			document.documentElement.style.setProperty("--show-utterances", "none");
-		} else {
+		if (pathname.includes("blog") && pathname !== "/blog") {
 			document.documentElement.style.setProperty("--show-utterances", "block");
+		} else {
+			document.documentElement.style.setProperty("--show-utterances", "none");
 		}
 	}, [pathname]);
 

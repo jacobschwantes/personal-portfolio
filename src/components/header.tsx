@@ -23,10 +23,10 @@ const routes = [
 		name: "Projects",
 		path: "/projects",
 	},
-	// {
-	// 	name: "Blog",
-	// 	path: "/blog",
-	// },
+	{
+		name: "Blog",
+		path: "/blog",
+	},
 ];
 
 function Header() {
@@ -34,7 +34,10 @@ function Header() {
 
 	return (
 		<header className=" py-8 flex justify-between items-center ">
-			<Link href="/" className="dark:text-zinc-200 text-zinc-800 text-lg font-medium ">
+			<Link
+				href="/"
+				className="dark:text-zinc-200 text-zinc-800 text-lg font-medium "
+			>
 				Jacob Schwantes
 			</Link>
 			<nav className="md:flex hidden">
