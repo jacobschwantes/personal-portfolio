@@ -81,10 +81,10 @@ export default async function Home() {
 				<Projects limit={2} />
 			</section>
 
-			{/* <section className="gap-1 flex flex-col">
+			<section className="gap-1 flex flex-col">
 				<SectionHeader title="Blog" href="/blog" buttonLabel="All posts" />
 				<Posts />
-			</section> */}
+			</section>
 		</main>
 	);
 }
